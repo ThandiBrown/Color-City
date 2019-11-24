@@ -1,8 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
-using System.Collections;
 
-public class hope : MonoBehaviour
+public class ThrowSnowball : MonoBehaviour
 {
     public GameObject t;
     public GameObject p;
