@@ -14,108 +14,136 @@ public class SpearAttack : MonoBehaviour
     public float length;
     bool forward = false;
     bool backward = false;
-    bool spin = false;
-    float startingPosition;
-    float startRot;
-    bool next = false;
-    bool counterSpin = false;
+    float startingZPosition;
+    float startingYPosition;
+
+
+    [SerializeField] private Transform rotationPivotTransform;
+    [SerializeField] private float angleSpeed; //degrees per second 
+    [SerializeField] private float rotateAmount; //degrees
+    private float currentRotationAngle; //degrees private Vector3 rotationAxis;
+
+    bool next = false, swingLeft = false, swingRight = false, swingIt = false;
+    bool jabRight = false, jabLeft = false;
+    bool pointingLeft = false, pointingRight = false;
     void Start()
     {
         
         
     }
 
-    void Update()
+    void LateUpdate()
     {
-        if (false)
+        
+        if (Input.GetMouseButtonDown(0))
         {
-            if (Input.GetMouseButtonDown(0))
+            if (!jabLeft && !jabRight)
             {
-                startingPosition = transform.position.z;
-                Debug.Log(startingPosition);
-                Debug.Log(startingPosition - length);
+                startingZPosition = transform.position.z;
+                startingYPosition = transform.position.y;
+                Debug.Log(startingZPosition);
+                Debug.Log(startingZPosition - length);
                 forward = true;
+                if (!pointingLeft && !pointingRight) jabRight = true;
+                if (pointingLeft) jabLeft = true;
+                if (pointingRight) jabRight = true;
             }
+        }
 
+        if (jabRight)
+        {
+            if (forward)
+                transform.Translate(Vector3.down * moveSpeed * speedMultiplier * Time.deltaTime);
+            
+            if (backward)
+                transform.Translate(-Vector3.down * moveSpeed * Time.deltaTime);
+            
+            if (transform.position.z <= startingZPosition - length)
+            {
+                transform.position = new Vector3(transform.position.x, transform.position.y, startingZPosition - length);
+                forward = false;
+                backward = true;
+            }
+            else if (transform.position.z > startingZPosition)
+            {
+                transform.position = new Vector3(transform.position.x, startingYPosition, startingZPosition);
+                backward = false;
+                jabRight = false;
+            }
+        }
+
+        if (jabLeft)
+        {
             if (forward)
                 transform.Translate(Vector3.down * moveSpeed * speedMultiplier * Time.deltaTime);
 
             if (backward)
                 transform.Translate(-Vector3.down * moveSpeed * Time.deltaTime);
 
-            if (transform.position.z <= startingPosition - length)
+            if (transform.position.z >= startingZPosition + length)
             {
-                Debug.Log("less");
+                transform.position = new Vector3(transform.position.x, transform.position.y, startingZPosition + length);
                 forward = false;
                 backward = true;
             }
-            else if (transform.position.z > startingPosition)
+            else if (transform.position.z < startingZPosition)
             {
-                Debug.Log("greater");
+                transform.position = new Vector3(transform.position.x, startingYPosition, startingZPosition);
                 backward = false;
+                jabLeft = false;
+            }
+        }
+
+        if (true)
+        {
+            if (Input.GetMouseButtonDown(1))
+            {
+                currentRotationAngle = 0;
+                if (next)
+                {
+                    swingRight = true;
+                    swingLeft = false;
+                    pointingRight = true;
+                    pointingLeft = false;
+                }
+                else
+                {
+                    swingLeft = true;
+                    swingRight = false;
+                    pointingLeft = true;
+                    pointingRight = false;
+                }
+                swingIt = true;
+            }
+
+            if (swingIt)
+            {
+                float deltaAngle = angleSpeed * Time.deltaTime;
+                if (currentRotationAngle + deltaAngle >= rotateAmount)
+                {
+                    deltaAngle = rotateAmount - currentRotationAngle;
+                    enabled = false;
+                    enabled = true;
+                    swingIt = false;
+                    next = !next;
+
+                    Transform thePivot = transform.parent.transform.GetChild(2);
+                    rotationPivotTransform = thePivot;
+                }
+
+                if (swingLeft) transform.RotateAround(rotationPivotTransform.position, Vector3.right, deltaAngle);
+                if (swingRight) transform.RotateAround(rotationPivotTransform.position, Vector3.left, deltaAngle);
+                currentRotationAngle += deltaAngle;
             }
         }
         
-
-        if (Input.GetMouseButtonDown(1))
-        {
-            if (next)
-            {
-                startRot = transform.rotation.x;
-                counterSpin = true;
-                Debug.Log(startRot);
-            }
-            else
-            {
-                startRot = transform.rotation.x;
-                spin = true;
-                Debug.Log(startRot);
-            }
-            
-        }
-
-        if (spin)
-        {
-            transform.RotateAround(pivot.transform.position, Vector3.right, 1700f * Time.deltaTime);
-            Debug.Log(transform.rotation.x);
-            
-        }
-
-        if (counterSpin)
-        {
-            transform.RotateAround(pivot.transform.position, -Vector3.right, 1700f * Time.deltaTime);
-            Debug.Log(transform.rotation.x);
-            if (transform.rotation.x >= startRot)
-            {
-                counterSpin = false;
-                next = false;
-                //transform.eulerAngles = new Vector3(startRot, transform.eulerAngles.y, transform.eulerAngles.z);
-                Debug.Log("there");
-                
-            }
-
-        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.transform.name == "Stopper1")
-        {
-            Debug.Log("Stopper1");
-        }
-
-        if (other.transform.name == "Stopper2")
-        {
-            Debug.Log("bbb" + transform.rotation.x);
-            Debug.Log("Stop");
-            if (spin) spin = !spin;
-        }
-
-        if (other.gameObject != thePlayer && other.transform.name == "Stopper2" && other.transform.name == "Stopper1")
+        if (other.gameObject != thePlayer && !other.transform.IsChildOf(thePlayer.transform))
         {
             Destroy(other.gameObject);
         }
-
-        
     }
 }

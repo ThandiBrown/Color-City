@@ -5,9 +5,9 @@ using UnityEngine;
 public class rotateLearn : MonoBehaviour
 {
     [SerializeField] private Transform rotationPivotTransform;
-    [SerializeField] private float angularSpeed = 90; //degrees per second 
-    [SerializeField] private float targetRotationAngle; //degrees
-    private float currentRotationAngle = 0; //degrees private Vector3 rotationAxis;
+    [SerializeField] private float angleSpeed; //degrees per second 
+    [SerializeField] private float rotateAmount; //degrees
+    private float currentRotationAngle; //degrees private Vector3 rotationAxis;
 
     bool next = false, swingLeft = false, swingRight = false, swingIt = false;
     // Start is called before the first frame update
@@ -37,10 +37,10 @@ public class rotateLearn : MonoBehaviour
 
         if (swingIt)
         {
-            float deltaAngle = angularSpeed * Time.deltaTime;
-            if (currentRotationAngle + deltaAngle >= targetRotationAngle)
+            float deltaAngle = angleSpeed * Time.deltaTime;
+            if (currentRotationAngle + deltaAngle >= rotateAmount)
             {
-                deltaAngle = targetRotationAngle - currentRotationAngle;
+                deltaAngle = rotateAmount - currentRotationAngle;
                 enabled = false;
                 enabled = true;
                 swingIt = false;
@@ -56,6 +56,41 @@ public class rotateLearn : MonoBehaviour
         }
 
     }
+
+    /*
+     * other thing
+     * if (false)
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                startingPosition = transform.position.z;
+                Debug.Log(startingPosition);
+                Debug.Log(startingPosition - length);
+                forward = true;
+            }
+
+            if (forward)
+                transform.Translate(Vector3.down * moveSpeed * speedMultiplier * Time.deltaTime);
+
+            if (backward)
+                transform.Translate(-Vector3.down * moveSpeed * Time.deltaTime);
+
+            if (transform.position.z <= startingPosition - length)
+            {
+                Debug.Log("less");
+                forward = false;
+                backward = true;
+            }
+            else if (transform.position.z > startingPosition)
+            {
+                Debug.Log("greater");
+                backward = false;
+            }
+        }
+        */
+
+
+
 
     /*
      * 
