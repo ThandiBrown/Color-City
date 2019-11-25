@@ -3,35 +3,50 @@ using UnityEngine;
 
 public class ThrowSnowball : MonoBehaviour
 {
-    public GameObject t;
-    public GameObject p;
-    GameObject psaved;
-    Transform Target;
+
+    public static bool go;
+    public GameObject theTarget;
+    public GameObject snowball;
     public float firingAngle = 45.0f;
-    public float gravity = 9.8f;
+    public float gravityNum;
+    public float waitSec;
+    public float rotationMultiplier;
+    public float enemyLevel;
 
+    bool change = false;
+    Transform myTransform;
+    GameObject snowballClone;
+    Transform Target;
     Transform Projectile;
-    private Transform myTransform;
+    
 
-    void Awake()
+    public void ThrowSnow()
     {
-        psaved = Instantiate(p, transform.position, transform.rotation);
+        snowballClone = Instantiate(snowball, transform.position, transform.rotation);
         myTransform = transform;
-        Target = t.transform;
-        Projectile = psaved.transform;
-    }
-
-    void Start()
-    {
+        Target = theTarget.transform;
+        Projectile = snowballClone.transform;
+        BlueLevelTrigger.ballsThrown++;
+        Debug.Log("Ball: " + BlueLevelTrigger.ballsThrown);
         StartCoroutine(SimulateProjectile());
+        
     }
-
+    
 
     IEnumerator SimulateProjectile()
     {
+        if (change)
+        {
+            // Short delay added before Projectile is thrown
+            yield return new WaitForSeconds(waitSec * rotationMultiplier);
+            change = false;
+        }
+        else
+        {
+            yield return new WaitForSeconds(waitSec);
+            change = true;
+        }
         
-        // Short delay added before Projectile is thrown
-        yield return new WaitForSeconds(1.5f);
 
         // Move projectile to the position of throwing object + add some offset if needed.
         Projectile.position = myTransform.position + new Vector3(0, 0.0f, 0);
@@ -40,7 +55,7 @@ public class ThrowSnowball : MonoBehaviour
         float target_Distance = Vector3.Distance(Projectile.position, Target.position);
 
         // Calculate the velocity needed to throw the object to the target at specified angle.
-        float projectile_Velocity = target_Distance / (Mathf.Sin(2 * firingAngle * Mathf.Deg2Rad) / gravity);
+        float projectile_Velocity = target_Distance / (Mathf.Sin(2 * firingAngle * Mathf.Deg2Rad) / gravityNum);
 
         // Extract the X  Y componenent of the velocity
         float Vx = Mathf.Sqrt(projectile_Velocity) * Mathf.Cos(firingAngle * Mathf.Deg2Rad);
@@ -56,11 +71,39 @@ public class ThrowSnowball : MonoBehaviour
 
         while (elapse_time < flightDuration)
         {
-            Projectile.Translate(0, (Vy - (gravity * elapse_time)) * Time.deltaTime, Vx * Time.deltaTime);
+            if (Projectile == null) break;
+            
+            Projectile.Translate(0, (Vy - (gravityNum * elapse_time)) * Time.deltaTime, Vx * Time.deltaTime);
 
             elapse_time += Time.deltaTime;
 
             yield return null;
+            
+        }
+
+        if (BlueLevelTrigger.ballsThrown >= 6 && enemyLevel == 1)
+        {
+            yield return new WaitForSeconds(3f);
+            BlueLevelTrigger.moveAlong = true;
+        }
+        else ThrowSnow();
+    }
+
+    void Update()
+    {
+        if (BlueLevelTrigger.moveAlong)
+        {
+            theTarget.transform.Translate(Vector3.right * Time.deltaTime * 4);
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject == theTarget)
+        {
+            Collider m_Collider = GetComponent<Collider>();
+            m_Collider.enabled = !m_Collider.enabled;
+            ThrowSnow();
         }
     }
 }
