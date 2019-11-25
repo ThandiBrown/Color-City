@@ -22,6 +22,7 @@ public class snowballScript : MonoBehaviour
 
             if (Physics.Raycast(ray, out hit, 100.0f))
             {
+                Debug.Log(hit.transform.name);
                 if(hit.transform.name == "Snowball(Clone)") Destroy(hit.transform.gameObject);
             }
 

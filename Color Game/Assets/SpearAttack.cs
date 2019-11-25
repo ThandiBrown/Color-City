@@ -9,9 +9,10 @@ public class SpearAttack : MonoBehaviour
     Transform target;
     private Vector3 targetPoint;
 
-    public float moveSpeed;
-    public float speedMultiplier;
-    public float length;
+    public float moveSpeed = 5f;
+    public float speedMultiplier = 1f;
+    public float length = 1f;
+
     bool forward = false;
     bool backward = false;
     float startingZPosition;
@@ -19,35 +20,34 @@ public class SpearAttack : MonoBehaviour
 
 
     [SerializeField] private Transform rotationPivotTransform;
-    [SerializeField] private float angleSpeed; //degrees per second 
-    [SerializeField] private float rotateAmount; //degrees
+    [SerializeField] private float angleSpeed = 608f; //degrees per second 
+    [SerializeField] private float rotateAmount = 152f; //degrees
     private float currentRotationAngle; //degrees private Vector3 rotationAxis;
 
     bool next = false, swingLeft = false, swingRight = false, swingIt = false;
     bool jabRight = false, jabLeft = false;
     bool pointingLeft = false, pointingRight = false;
+    bool swingActive = false, jabActive = false;
     void Start()
     {
         
         
     }
 
-    void LateUpdate()
+    void Update()
     {
         
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && !Input.GetMouseButton(1) && !jabActive && !swingActive)
         {
-            if (!jabLeft && !jabRight)
-            {
-                startingZPosition = transform.position.z;
-                startingYPosition = transform.position.y;
-                Debug.Log(startingZPosition);
-                Debug.Log(startingZPosition - length);
-                forward = true;
-                if (!pointingLeft && !pointingRight) jabRight = true;
-                if (pointingLeft) jabLeft = true;
-                if (pointingRight) jabRight = true;
-            }
+            jabActive = true;
+            startingZPosition = transform.position.z;
+            startingYPosition = transform.position.y;
+            Debug.Log(startingZPosition);
+            Debug.Log(startingZPosition - length);
+            forward = true;
+            if (!pointingLeft && !pointingRight) jabRight = true;
+            if (pointingLeft) jabLeft = true;
+            if (pointingRight) jabRight = true;
         }
 
         if (jabRight)
@@ -69,6 +69,7 @@ public class SpearAttack : MonoBehaviour
                 transform.position = new Vector3(transform.position.x, startingYPosition, startingZPosition);
                 backward = false;
                 jabRight = false;
+                jabActive = false;
             }
         }
 
@@ -91,51 +92,52 @@ public class SpearAttack : MonoBehaviour
                 transform.position = new Vector3(transform.position.x, startingYPosition, startingZPosition);
                 backward = false;
                 jabLeft = false;
+                jabActive = false;
             }
         }
-
-        if (true)
+        
+        if (Input.GetMouseButtonDown(1) && !Input.GetMouseButton(0) && !jabActive && !swingActive)
         {
-            if (Input.GetMouseButtonDown(1))
+            swingIt = true;
+            swingActive = true;
+            currentRotationAngle = 0;
+            if (next)
             {
-                currentRotationAngle = 0;
-                if (next)
-                {
-                    swingRight = true;
-                    swingLeft = false;
-                    pointingRight = true;
-                    pointingLeft = false;
-                }
-                else
-                {
-                    swingLeft = true;
-                    swingRight = false;
-                    pointingLeft = true;
-                    pointingRight = false;
-                }
-                swingIt = true;
+                swingRight = true;
+                swingLeft = false;
+                pointingRight = true;
+                pointingLeft = false;
             }
-
-            if (swingIt)
+            else
             {
-                float deltaAngle = angleSpeed * Time.deltaTime;
-                if (currentRotationAngle + deltaAngle >= rotateAmount)
-                {
-                    deltaAngle = rotateAmount - currentRotationAngle;
-                    enabled = false;
-                    enabled = true;
-                    swingIt = false;
-                    next = !next;
-
-                    Transform thePivot = transform.parent.transform.GetChild(2);
-                    rotationPivotTransform = thePivot;
-                }
-
-                if (swingLeft) transform.RotateAround(rotationPivotTransform.position, Vector3.right, deltaAngle);
-                if (swingRight) transform.RotateAround(rotationPivotTransform.position, Vector3.left, deltaAngle);
-                currentRotationAngle += deltaAngle;
+                swingLeft = true;
+                swingRight = false;
+                pointingLeft = true;
+                pointingRight = false;
             }
         }
+
+        if (swingIt)
+        {
+            float deltaAngle = angleSpeed * Time.deltaTime;
+            if (currentRotationAngle + deltaAngle >= rotateAmount)
+            {
+                deltaAngle = rotateAmount - currentRotationAngle;
+                enabled = false;
+                enabled = true;
+                swingIt = false;
+                next = !next;
+
+                Transform thePivot = transform.parent.transform.GetChild(2);
+                rotationPivotTransform = thePivot;
+            }
+
+            if (swingLeft) transform.RotateAround(rotationPivotTransform.position, Vector3.right, deltaAngle);
+            if (swingRight) transform.RotateAround(rotationPivotTransform.position, Vector3.left, deltaAngle);
+            currentRotationAngle += deltaAngle;
+            if (!swingIt) swingActive = false;
+        }
+        
         
     }
 
