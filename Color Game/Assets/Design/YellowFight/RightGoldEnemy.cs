@@ -15,14 +15,10 @@ public class RightGoldEnemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (player.transform.position.z > transform.position.z)
+        if (player.transform.position.z > transform.position.z || player != null)
         {
             transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime);
         }
     }
-
-    void OnTriggerEnter(Collider other)
-    {
-        //if (other.gameObject == player.transform.GetChild(0)) Destroy(other.gameObject.transform.parent);
-    }
+    
 }

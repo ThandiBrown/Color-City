@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2056868402834557822
+--- !u!1 &7230153134485305876
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,12 +8,12 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2056868402834557796}
-  - component: {fileID: 2056868402834557797}
-  - component: {fileID: 2056868402834557794}
-  - component: {fileID: 2056868402834557795}
-  - component: {fileID: 2056868402834557792}
-  - component: {fileID: 7096383813061026176}
+  - component: {fileID: 8269759364019174395}
+  - component: {fileID: 5123646809989801869}
+  - component: {fileID: 8225133474230270860}
+  - component: {fileID: 6948328273755194703}
+  - component: {fileID: 1538604255978931799}
+  - component: {fileID: 3764755353464464377}
   m_Layer: 0
   m_Name: LeftEnemy
   m_TagString: Untagged
@@ -21,35 +21,35 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2056868402834557796
+--- !u!4 &8269759364019174395
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2056868402834557822}
+  m_GameObject: {fileID: 7230153134485305876}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 3.2, y: 1, z: 16.5}
+  m_LocalPosition: {x: 1.4907146, y: 1, z: 6.2238665}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
---- !u!33 &2056868402834557797
+--- !u!33 &5123646809989801869
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2056868402834557822}
+  m_GameObject: {fileID: 7230153134485305876}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &2056868402834557794
+--- !u!23 &8225133474230270860
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2056868402834557822}
+  m_GameObject: {fileID: 7230153134485305876}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -60,7 +60,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 73bf032c78ac8f44b811db0a575e66a5, type: 2}
+  - {fileID: 2100000, guid: 209aece55811207439365385dffc8f76, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -81,13 +81,13 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!136 &2056868402834557795
+--- !u!136 &6948328273755194703
 CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2056868402834557822}
+  m_GameObject: {fileID: 7230153134485305876}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
@@ -95,13 +95,13 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &2056868402834557792
+--- !u!54 &1538604255978931799
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2056868402834557822}
+  m_GameObject: {fileID: 7230153134485305876}
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
@@ -111,17 +111,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &7096383813061026176
+--- !u!114 &3764755353464464377
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2056868402834557822}
+  m_GameObject: {fileID: 7230153134485305876}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6a10bef4313f3e344a649eeedf016d18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 224024291661047558, guid: 96a885cd6580b6840b65059848586299, type: 3}
+  player: {fileID: 5029387271489586038, guid: 96a885cd6580b6840b65059848586299, type: 3}
   moveSpeed: 1

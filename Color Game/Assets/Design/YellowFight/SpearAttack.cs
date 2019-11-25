@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class SpearAttack : MonoBehaviour
 {
+    public static bool jabIsHappening = false, swingIsHappening = false;
+
     public GameObject thePlayer;
     public GameObject pivot;
     Transform target;
@@ -40,6 +42,7 @@ public class SpearAttack : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && !Input.GetMouseButton(1) && !jabActive && !swingActive)
         {
             jabActive = true;
+            jabIsHappening = true;
             startingZPosition = transform.position.z;
             startingYPosition = transform.position.y;
             Debug.Log(startingZPosition);
@@ -70,6 +73,7 @@ public class SpearAttack : MonoBehaviour
                 backward = false;
                 jabRight = false;
                 jabActive = false;
+                jabIsHappening = false;
             }
         }
 
@@ -93,6 +97,7 @@ public class SpearAttack : MonoBehaviour
                 backward = false;
                 jabLeft = false;
                 jabActive = false;
+                jabIsHappening = false;
             }
         }
         
@@ -100,6 +105,7 @@ public class SpearAttack : MonoBehaviour
         {
             swingIt = true;
             swingActive = true;
+            swingIsHappening = true;
             currentRotationAngle = 0;
             if (next)
             {
@@ -135,7 +141,12 @@ public class SpearAttack : MonoBehaviour
             if (swingLeft) transform.RotateAround(rotationPivotTransform.position, Vector3.right, deltaAngle);
             if (swingRight) transform.RotateAround(rotationPivotTransform.position, Vector3.left, deltaAngle);
             currentRotationAngle += deltaAngle;
-            if (!swingIt) swingActive = false;
+            if (!swingIt)
+            {
+                swingActive = false;
+                swingIsHappening = false;
+            }
+
         }
         
         

@@ -14,10 +14,10 @@ public class YellowEnemySpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rightEnemyPos = new Vector3(3.2f, 1f, 0.5f);
+        rightEnemyPos = new Vector3(2.656f, 1f, 0.5f);
         InvokeRepeating("RightEnemySpawner", 1f, r_repeatRate);
 
-        leftEnemyPos = new Vector3(3.2f, 1f, 16.5f);
+        leftEnemyPos = new Vector3(2.656f, 1f, 16.5f);
         InvokeRepeating("LeftEnemySpawner", 1f, l_repeatRate);
         
     }
