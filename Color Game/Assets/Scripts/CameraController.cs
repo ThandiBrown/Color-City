@@ -24,7 +24,7 @@ public class CameraController : MonoBehaviour
         pivot.transform.parent = null;
         //pivot.transform.parent = target.transform;
 
-        Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.lockState = CursorLockMode.Locked;
     }
 
     // Update is called once per frame
