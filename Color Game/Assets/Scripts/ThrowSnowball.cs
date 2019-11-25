@@ -22,13 +22,16 @@ public class ThrowSnowball : MonoBehaviour
 
     public void ThrowSnow()
     {
-        snowballClone = Instantiate(snowball, transform.position, transform.rotation);
-        myTransform = transform;
-        Target = theTarget.transform;
-        Projectile = snowballClone.transform;
-        BlueLevelTrigger.ballsThrown++;
-        Debug.Log("Ball: " + BlueLevelTrigger.ballsThrown);
-        StartCoroutine(SimulateProjectile());
+        
+        
+            snowballClone = Instantiate(snowball, transform.position, transform.rotation);
+            myTransform = transform;
+            Target = theTarget.transform;
+            Projectile = snowballClone.transform;
+            BlueLevelTrigger.ballsThrown++;
+            Debug.Log("Ball: " + BlueLevelTrigger.ballsThrown);
+            StartCoroutine(SimulateProjectile());
+ 
         
     }
     
@@ -101,8 +104,6 @@ public class ThrowSnowball : MonoBehaviour
     {
         if(other.gameObject == theTarget)
         {
-            Collider m_Collider = GetComponent<Collider>();
-            m_Collider.enabled = !m_Collider.enabled;
             ThrowSnow();
         }
     }
