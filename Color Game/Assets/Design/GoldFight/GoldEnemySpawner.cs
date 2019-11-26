@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class YellowEnemySpawner : MonoBehaviour
+public class GoldEnemySpawner : MonoBehaviour
 {
     public GameObject rightEnemy;
     public GameObject leftEnemy;
@@ -25,7 +26,13 @@ public class YellowEnemySpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (SpearAttack.killCount == 8)
+        {
+            CancelInvoke("RightEnemySpawner");
+            CancelInvoke("LeftEnemySpawner");
+            Invoke("goToBase", 2f);
+            SpearAttack.killCount = 0;
+        }
     }
 
     void RightEnemySpawner()
@@ -36,6 +43,11 @@ public class YellowEnemySpawner : MonoBehaviour
     void LeftEnemySpawner()
     {
         Instantiate(leftEnemy, leftEnemyPos, Quaternion.Euler(0, 180, 0));
+    }
+
+    void goToBase()
+    {
+        SceneManager.LoadScene("MainTown");
     }
 
 }

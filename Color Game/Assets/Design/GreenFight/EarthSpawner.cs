@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EarthSpawner : MonoBehaviour
 {
@@ -17,6 +18,10 @@ public class EarthSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (EarthWeapon.count == 4)
+        {
+            Invoke("goToBase", 7f);
+        }
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Ray ray = Camera.main.ScreenPointToRay(Crosshair.crosshairPos);
@@ -24,7 +29,7 @@ public class EarthSpawner : MonoBehaviour
 
             if (Physics.Raycast(ray, out hit))
             {
-                if (hit.transform.gameObject.name != "Terrain")
+                if (hit.transform.gameObject.name != "Terrain" && hit.transform.gameObject.name != "EarthWeapon(Clone)")
                 {
                     ball = hit.transform.gameObject;
                     earthPiece = Instantiate(earthPieceBase, new Vector3(player.transform.position.x, player.transform.position.y - 3, player.transform.position.z + 4), player.transform.rotation);
@@ -41,5 +46,10 @@ public class EarthSpawner : MonoBehaviour
     {
         Debug.Log("mimp");
         //face = true;
+    }
+
+    void goToBase()
+    {
+        SceneManager.LoadScene("MainTown");
     }
 }

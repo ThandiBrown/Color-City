@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
+
 public class ThrowSnowball : MonoBehaviour
 {
 
@@ -12,7 +13,7 @@ public class ThrowSnowball : MonoBehaviour
     public float waitSec;
     public float rotationMultiplier;
     public float enemyLevel;
-
+    public GameObject levelTrig;
     bool change = false;
     Transform myTransform;
     GameObject snowballClone;
@@ -27,7 +28,7 @@ public class ThrowSnowball : MonoBehaviour
         Target = theTarget.transform;
         Projectile = snowballClone.transform;
         BlueLevelTrigger.ballsThrown++;
-        Debug.Log("Ball: " + BlueLevelTrigger.ballsThrown);
+        //Debug.Log("Ball: " + BlueLevelTrigger.ballsThrown);
         StartCoroutine(SimulateProjectile());
     }
     
@@ -85,13 +86,27 @@ public class ThrowSnowball : MonoBehaviour
             yield return new WaitForSeconds(3f);
             BlueLevelTrigger.moveAlong = true;
         }
-        else ThrowSnow();
+        else if (BlueLevelTrigger.ballsThrown >= 12 && enemyLevel == 2 )
+        {
+            
+        }
+        else
+        {
+            ThrowSnow();
+        }
     }
 
     void Update()
     {
-        if (BlueLevelTrigger.moveAlong)
+        if (BlueLevelTrigger.moveAlong && enemyLevel == 1)
         {
+            //theTarget.transform.position = Vector3.MoveTowards(theTarget.transform.position, levelTrig.transform.position, 7f * Time.deltaTime);
+            theTarget.transform.Translate(Vector3.right * Time.deltaTime * 4);
+        }
+
+        if (BlueLevelTrigger.ballsThrown >= 12 && enemyLevel == 2 && GameObject.FindWithTag("Snowball") == null)
+        {
+            //theTarget.transform.position = Vector3.MoveTowards(theTarget.transform.position, levelTrig.transform.position, 7f * Time.deltaTime);
             theTarget.transform.Translate(Vector3.right * Time.deltaTime * 4);
         }
     }
@@ -105,4 +120,7 @@ public class ThrowSnowball : MonoBehaviour
             ThrowSnow();
         }
     }
+    
+
+    
 }

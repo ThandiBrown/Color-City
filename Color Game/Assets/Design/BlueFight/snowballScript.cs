@@ -24,7 +24,6 @@ public class snowballScript : MonoBehaviour
                 Debug.Log(hit.transform.name);
                 if(hit.transform.name == "Snowball(Clone)") Destroy(hit.transform.gameObject);
             }
-
         }
     }
     

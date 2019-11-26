@@ -15,11 +15,12 @@ public class SpearAttack : MonoBehaviour
     public float speedMultiplier = 1f;
     public float length = 1f;
 
+    public static float killCount = 0;
+
     bool forward = false;
     bool backward = false;
     float startingZPosition;
     float startingYPosition;
-
 
     [SerializeField] private Transform rotationPivotTransform;
     [SerializeField] private float angleSpeed = 608f; //degrees per second 
@@ -43,6 +44,7 @@ public class SpearAttack : MonoBehaviour
         {
             jabActive = true;
             jabIsHappening = true;
+           
             startingZPosition = transform.position.z;
             startingYPosition = transform.position.y;
             Debug.Log(startingZPosition);
@@ -156,6 +158,7 @@ public class SpearAttack : MonoBehaviour
     {
         if (other.gameObject != thePlayer && !other.transform.IsChildOf(thePlayer.transform))
         {
+            killCount++;
             Destroy(other.gameObject);
         }
     }

@@ -11,10 +11,11 @@ public class EarthWeapon : MonoBehaviour
     Vector3 risePos;
     static bool goTowards;
     bool rise, face;
-
+    public static float count = 0;
     // Start is called before the first frame update
     void Start()
     {
+        count++;
         rise = true;
         risePos = new Vector3(player.transform.position.x, transform.position.y + 3, player.transform.position.z + 3);
         face = false;
