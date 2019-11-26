@@ -25,7 +25,7 @@ public class EarthWeapon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (rise)
+        if (rise && ball != null)
         {
             transform.position = Vector3.MoveTowards(transform.position, risePos, 10f * Time.deltaTime);
 
@@ -35,8 +35,13 @@ public class EarthWeapon : MonoBehaviour
                 Invoke("continueAttack", 0.1f);
             }
         }
+        else if (ball == null)
+        {
+            rise = false;
+            Destroy(gameObject);
+        }
 
-        if (face)
+        if (face && ball != null)
         {
             if (goTowards) Debug.Log("oof");
             transform.LookAt(ball.transform, Vector3.up);
@@ -51,8 +56,13 @@ public class EarthWeapon : MonoBehaviour
                 goTowards = true;
             }
         }
+        else if (ball == null)
+        {
+            face = false;
+            Destroy(gameObject);
+        }
 
-        if (goTowards)
+        if (goTowards && ball != null)
         {
             if (gameObject != null && ball != null)
             {
@@ -64,6 +74,11 @@ public class EarthWeapon : MonoBehaviour
                 Debug.Log("hit");
             }
 
+        }
+        else if (ball == null)
+        {
+            goTowards = false;
+            Destroy(gameObject);
         }
     }
 

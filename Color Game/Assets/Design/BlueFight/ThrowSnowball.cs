@@ -86,9 +86,8 @@ public class ThrowSnowball : MonoBehaviour
             yield return new WaitForSeconds(3f);
             BlueLevelTrigger.moveAlong = true;
         }
-        else if (BlueLevelTrigger.ballsThrown >= 12 && enemyLevel == 2 )
+        if (BlueLevelTrigger.ballsThrown >= 12 && enemyLevel == 2)
         {
-            
         }
         else
         {

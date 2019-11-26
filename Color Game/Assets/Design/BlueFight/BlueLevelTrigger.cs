@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class BlueLevelTrigger : MonoBehaviour
 {
     public static float ballsThrown;
-    public static bool moveAlong;
+    public static bool moveAlong = false;
     public static bool startThrowing = false;
     static float count = 0;
     public static bool closeOut = false;

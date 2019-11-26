@@ -5,6 +5,7 @@ using UnityEngine;
 public class GreenEnemy : MonoBehaviour
 {
     public GameObject player;
+    public float speedNum;
     void Start()
     {
 
@@ -12,6 +13,6 @@ public class GreenEnemy : MonoBehaviour
 
     void Update()
     {
-        transform.position = Vector3.MoveTowards(transform.position, player.transform.position, 5f * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, player.transform.position, speedNum * Time.deltaTime);
     }
 }

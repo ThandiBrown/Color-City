@@ -65,10 +65,10 @@ public class CameraController : MonoBehaviour
 
         if (transform.position.y < target.position.y)
         {
-            Debug.Log("here");
-            Debug.Log(transform.position.y);
+            //Debug.Log("here");
+            //Debug.Log(transform.position.y);
             transform.position = new Vector3(transform.position.x, target.position.y - 0.5f, transform.position.z);
-            Debug.Log("new" + transform.position.y);
+            //Debug.Log("new" + transform.position.y);
         }
 
         transform.LookAt(target);

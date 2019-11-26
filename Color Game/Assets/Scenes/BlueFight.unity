@@ -1085,16 +1085,61 @@ PrefabInstance:
       propertyPath: theTarget
       value: 
       objectReference: {fileID: 1642143321}
+    - target: {fileID: 1300573561774015942, guid: eda5a8b37d9cafe4dbf7d7e5b2143b79,
+        type: 3}
+      propertyPath: waitSec
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1300573561774015942, guid: eda5a8b37d9cafe4dbf7d7e5b2143b79,
+        type: 3}
+      propertyPath: gravityNum
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 1300573561917738992, guid: eda5a8b37d9cafe4dbf7d7e5b2143b79,
+        type: 3}
+      propertyPath: theTarget
+      value: 
+      objectReference: {fileID: 1642143321}
+    - target: {fileID: 1300573561917738992, guid: eda5a8b37d9cafe4dbf7d7e5b2143b79,
+        type: 3}
+      propertyPath: firingAngle
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 1300573561917738992, guid: eda5a8b37d9cafe4dbf7d7e5b2143b79,
+        type: 3}
+      propertyPath: gravityNum
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1300573561917738992, guid: eda5a8b37d9cafe4dbf7d7e5b2143b79,
+        type: 3}
+      propertyPath: waitSec
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1300573561972826893, guid: eda5a8b37d9cafe4dbf7d7e5b2143b79,
         type: 3}
       propertyPath: theTarget
       value: 
       objectReference: {fileID: 1642143321}
     - target: {fileID: 1300573561972826893, guid: eda5a8b37d9cafe4dbf7d7e5b2143b79,
         type: 3}
-      propertyPath: theTarget
-      value: 
-      objectReference: {fileID: 1642143321}
+      propertyPath: firingAngle
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1300573561972826893, guid: eda5a8b37d9cafe4dbf7d7e5b2143b79,
+        type: 3}
+      propertyPath: waitSec
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1300573561972826893, guid: eda5a8b37d9cafe4dbf7d7e5b2143b79,
+        type: 3}
+      propertyPath: rotationMultiplier
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1300573561972826893, guid: eda5a8b37d9cafe4dbf7d7e5b2143b79,
+        type: 3}
+      propertyPath: gravityNum
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1300573563055444569, guid: eda5a8b37d9cafe4dbf7d7e5b2143b79,
         type: 3}
       propertyPath: theTarget
