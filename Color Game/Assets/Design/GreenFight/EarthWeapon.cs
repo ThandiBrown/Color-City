@@ -9,15 +9,16 @@ public class EarthWeapon : MonoBehaviour
     public GameObject ball;
     public GameObject player;
     Vector3 risePos;
-    static bool goTowards = false;
-    bool rise = false, face = false;
+    static bool goTowards;
+    bool rise, face;
 
     // Start is called before the first frame update
     void Start()
     {
         rise = true;
         risePos = new Vector3(player.transform.position.x, transform.position.y + 3, player.transform.position.z + 3);
-
+        face = false;
+        goTowards = false;
     }
 
     // Update is called once per frame
@@ -25,12 +26,12 @@ public class EarthWeapon : MonoBehaviour
     {
         if (rise)
         {
-            transform.position = Vector3.MoveTowards(transform.position, risePos, 5f * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, risePos, 10f * Time.deltaTime);
 
             if (transform.position.y >= risePos.y)
             {
                 rise = false;
-                Invoke("continueAttack", 0.4f);
+                Invoke("continueAttack", 0.1f);
             }
         }
 
@@ -74,7 +75,7 @@ public class EarthWeapon : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         Destroy(other.gameObject);
-        if (other.gameObject != otherEarth || gameObject.name == "GameObject(Clone)")
+        if (other.gameObject != otherEarth || gameObject.name == "EarthWeapon(Clone)")
         {
             Destroy(gameObject);
         }

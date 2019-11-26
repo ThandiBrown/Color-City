@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GreenEnemy : MonoBehaviour
 {
-
+    public GameObject player;
     void Start()
     {
 
@@ -12,6 +12,6 @@ public class GreenEnemy : MonoBehaviour
 
     void Update()
     {
-        
+        transform.position = Vector3.MoveTowards(transform.position, player.transform.position, 5f * Time.deltaTime);
     }
 }

@@ -16,7 +16,6 @@ public class Defense : MonoBehaviour
 
     void OnMouseDown()
     {
-        GetComponent<Rigidbody>().AddForce(transform.forward*500);
-    }
+        GetComponent<Rigidbody>().AddForce(transform.forward*500);    }
 
 }

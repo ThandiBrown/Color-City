@@ -12,16 +12,16 @@ public class GreenSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //StartCoroutine(EnemyDrop());
+        StartCoroutine(EnemyDrop());
     }
 
     // Update is called once per frame
     IEnumerator EnemyDrop()
     {
-        while (enemyCount < 4)
+        while (enemyCount < 7)
         {
-            xPos = Random.Range(40, 60);
-            zPos = Random.Range(20, 80);
+            xPos = Random.Range(20, 80);
+            zPos = Random.Range(20, 100);
             Instantiate(theEnemy, new Vector3(xPos, 2, zPos), Quaternion.identity);
             yield return new WaitForSeconds(0.1f);
             enemyCount++;
