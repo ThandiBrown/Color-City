@@ -2,7 +2,7 @@
 using UnityEngine;
 
 
-public class ThrowSnowball : MonoBehaviour
+public class EnemyThrow : MonoBehaviour
 {
 
     public static bool go;
