@@ -19,22 +19,29 @@ public class ThrowSnowball : MonoBehaviour
     GameObject snowballClone;
     Transform Target;
     Transform Projectile;
-    
-
+    float snowballsThrown = 0;
     public void ThrowSnow()
     {
-        snowballClone = Instantiate(snowball, transform.position, transform.rotation);
-        myTransform = transform;
-        Target = theTarget.transform;
-        Projectile = snowballClone.transform;
-        BlueLevelTrigger.ballsThrown++;
-        //Debug.Log("Ball: " + BlueLevelTrigger.ballsThrown);
-        StartCoroutine(SimulateProjectile());
+        if (snowballsThrown != 3)
+        {
+            snowballClone = Instantiate(snowball, transform.position, transform.rotation);
+            myTransform = transform;
+            Target = theTarget.transform;
+            Projectile = snowballClone.transform;
+            Debug.Log("Ball: " + (snowballsThrown+1));
+            StartCoroutine(SimulateProjectile());
+        }
+        else
+        {
+
+        }
+        
     }
     
 
     IEnumerator SimulateProjectile()
     {
+        snowballsThrown++;
         if (change)
         {
             // Short delay added before Projectile is thrown
@@ -80,44 +87,16 @@ public class ThrowSnowball : MonoBehaviour
             yield return null;
             
         }
-
-        if (BlueLevelTrigger.ballsThrown >= 6 && enemyLevel == 1)
-        {
-            yield return new WaitForSeconds(3f);
-            BlueLevelTrigger.moveAlong = true;
-        }
-        if (BlueLevelTrigger.ballsThrown >= 12 && enemyLevel == 2)
-        {
-        }
-        else
-        {
-            ThrowSnow();
-        }
+        ThrowSnow();
     }
+    
 
-    void Update()
+    public void StartThrowing()
     {
-        if (BlueLevelTrigger.moveAlong && enemyLevel == 1)
-        {
-            //theTarget.transform.position = Vector3.MoveTowards(theTarget.transform.position, levelTrig.transform.position, 7f * Time.deltaTime);
-            theTarget.transform.Translate(Vector3.right * Time.deltaTime * 4);
-        }
-
-        if (BlueLevelTrigger.ballsThrown >= 12 && enemyLevel == 2 && GameObject.FindWithTag("Snowball") == null)
-        {
-            //theTarget.transform.position = Vector3.MoveTowards(theTarget.transform.position, levelTrig.transform.position, 7f * Time.deltaTime);
-            theTarget.transform.Translate(Vector3.right * Time.deltaTime * 4);
-        }
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if(other.gameObject == theTarget)
-        {
-            Collider selfCollider = GetComponent<Collider>();
-            selfCollider.enabled = false;
-            ThrowSnow();
-        }
+        snowballsThrown = 0;
+        Collider selfCollider = GetComponent<Collider>();
+        selfCollider.enabled = false;
+        ThrowSnow();
     }
     
 

@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &5019827596930154404
+--- !u!1 &1614782005887007996
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,47 +8,47 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5019827596930154400}
-  - component: {fileID: 5019827596930154401}
-  - component: {fileID: 5019827596930154406}
-  - component: {fileID: 5019827596930154407}
-  - component: {fileID: 5019827596930154403}
+  - component: {fileID: 1614782005887007997}
+  - component: {fileID: 1614782005887007969}
+  - component: {fileID: 1614782005887007968}
+  - component: {fileID: 1614782005887007971}
+  - component: {fileID: 1614782005887007970}
   m_Layer: 0
-  m_Name: BasicCharacter
+  m_Name: BlueEnemy 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5019827596930154400
+--- !u!4 &1614782005887007997
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5019827596930154404}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.74725795, y: 1, z: 5.12}
+  m_GameObject: {fileID: 1614782005887007996}
+  m_LocalRotation: {x: -0, y: 0.60876137, z: -0, w: 0.7933534}
+  m_LocalPosition: {x: 9.566093, y: -2.843367, z: 4.01766}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &5019827596930154401
+  m_LocalEulerAnglesHint: {x: 0, y: 75, z: 0}
+--- !u!33 &1614782005887007969
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5019827596930154404}
+  m_GameObject: {fileID: 1614782005887007996}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &5019827596930154406
+--- !u!23 &1614782005887007968
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5019827596930154404}
+  m_GameObject: {fileID: 1614782005887007996}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -59,7 +59,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: fc68abf741124d349b624ea851e0302f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -80,33 +80,38 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!136 &5019827596930154407
+--- !u!136 &1614782005887007971
 CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5019827596930154404}
+  m_GameObject: {fileID: 1614782005887007996}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
+  m_Radius: 3.6498044
+  m_Height: 7.2996063
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &5019827596930154403
-Rigidbody:
+  m_Center: {x: -0.000000037082465, y: 0, z: -3.1497982}
+--- !u!114 &1614782005887007970
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5019827596930154404}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
+  m_GameObject: {fileID: 1614782005887007996}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5dad63ef4a36ec64d9365a2c2d460317, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  theTarget: {fileID: 0}
+  snowball: {fileID: 1801037209323058810, guid: 95fd7d04f6cb8fc4ab9ca93a1db325ce,
+    type: 3}
+  firingAngle: 45
+  gravityNum: 10
+  waitSec: 1.5
+  rotationMultiplier: 1
+  enemyLevel: 1
+  levelTrig: {fileID: 0}

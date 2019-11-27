@@ -5,7 +5,7 @@ using UnityEngine;
 public class RightGoldEnemy : MonoBehaviour
 {
     public GameObject player;
-    public float moveSpeed = 1f;
+    public float moveSpeed;
     // Start is called before the first frame update
     void Start()
     {

@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class snowballScript : MonoBehaviour
+public class SnowballScript : MonoBehaviour
 {
     public GameObject otherSnowball;
 
+    public static float totalSnowballsDestroyed = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,17 +23,22 @@ public class snowballScript : MonoBehaviour
             if (Physics.Raycast(ray, out hit, 100.0f))
             {
                 Debug.Log(hit.transform.name);
-                if(hit.transform.name == "Snowball(Clone)") Destroy(hit.transform.gameObject);
+                if (hit.transform.name == "Snowball(Clone)")
+                {
+                    Destroy(hit.transform.gameObject);
+                    totalSnowballsDestroyed++;
+                }
             }
         }
     }
     
 
-    private void OnTriggerEnter(Collider other)
+    void OnTriggerEnter(Collider other)
     {
         if(other.gameObject != otherSnowball)
         {
            Destroy(gameObject);
+            totalSnowballsDestroyed++;
         }
     }
 }

@@ -6,25 +6,39 @@ using UnityEngine.SceneManagement;
 public class BlueLevelTrigger : MonoBehaviour
 {
     public static float ballsThrown;
-    public static bool moveAlong = false;
-    public static bool startThrowing = false;
-    static float count = 0;
-    public static bool closeOut = false;
-    
-    private void OnTriggerEnter(Collider other)
+    public static float count = 0;
+    public GameObject theTarget;
+    public static float destroyedSnowballs = 0;
+
+    void Update()
     {
-        ballsThrown = 0;
-        moveAlong = false;
-        count++;
-        if (count == 3) Invoke("goToBase", 2f);
-        Debug.Log("count: " + count);
-        startThrowing = true;
-        Debug.Log("yyyyyyyyyyyy");
+        if(count == 1 && destroyedSnowballs == 6)
+        {
+            theTarget.transform.Translate(Vector3.right * Time.deltaTime * 4);
+        }
+        if (count == 2 && destroyedSnowballs == 12)
+        {
+            theTarget.transform.Translate(Vector3.right * Time.deltaTime * 4);
+        }
     }
 
-    void goToBase()
+    void OnTriggerEnter(Collider other)
+    {
+        BlueLevelTrigger.ballsThrown = 0;
+        Invoke("Counter", 0.3f);
+    }
+
+    void GoToBase()
     {
         SceneManager.LoadScene("MainTown");
+    }
+
+    void Counter()
+    {
+        count++;
+        if (count == 3) Invoke("GoToBase", 2f);
+        Debug.Log("count: " + count);
+        Debug.Log("yyyyyyyyyyyy");
     }
 }
     
