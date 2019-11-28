@@ -31,11 +31,6 @@ public class EnemyThrow : MonoBehaviour
             Debug.Log("Ball: " + (snowballsThrown+1));
             StartCoroutine(SimulateProjectile());
         }
-        else
-        {
-
-        }
-        
     }
     
 
