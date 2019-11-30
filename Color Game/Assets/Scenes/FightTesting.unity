@@ -289,6 +289,16 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 1593894899}
+    - target: {fileID: 3652272416640254338, guid: d3e4d0f51020b454f9a32e9833a4fa90,
+        type: 3}
+      propertyPath: rotateSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3652272416640254338, guid: d3e4d0f51020b454f9a32e9833a4fa90,
+        type: 3}
+      propertyPath: useOffsetValues
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d3e4d0f51020b454f9a32e9833a4fa90, type: 3}
 --- !u!1 &1593894895
@@ -304,6 +314,7 @@ GameObject:
   - component: {fileID: 1593894897}
   - component: {fileID: 1593894896}
   - component: {fileID: 1593894900}
+  - component: {fileID: 1593894901}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Untagged
@@ -400,6 +411,28 @@ MonoBehaviour:
   snowball: {fileID: 4704116072262537508, guid: 40e5c916daeded046a9594dbbbcdf2d1,
     type: 3}
   camerar: {fileID: 482676378}
+  moveSpeed: 3
+  controller: {fileID: 1593894901}
+  jumpForce: 0
+  gravityScale: 9.8
+--- !u!143 &1593894901
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1593894895}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 2
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1619537025
 GameObject:
   m_ObjectHideFlags: 0
