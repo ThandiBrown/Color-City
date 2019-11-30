@@ -108,7 +108,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startTransform: {fileID: 0}
   firingAngle: 60
-  gravityNum: 20
+  gravityNum: 120
 --- !u!54 &-3000050118051992897
 Rigidbody:
   m_ObjectHideFlags: 0

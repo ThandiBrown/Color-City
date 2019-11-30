@@ -7,6 +7,7 @@ public class EarthPieceMovement : MonoBehaviour
     public GameObject player;
     Vector3 risePos, destPos;
     bool rise, goTowards;
+    public GameObject enemy;
     // Start is called before the first frame update
     void Start()
     {
@@ -47,11 +48,14 @@ public class EarthPieceMovement : MonoBehaviour
         }
     }
 
+    void onCollisionEnter(Collision other)
+    {
+        // Destroy
+    }
+
     void OnTriggerEnter(Collider other)
     {
-        Destroy(other.gameObject);
-        Destroy(gameObject);
-        
+        //other.gameObject.transform.parent = transform;
     }
 
     void continueAttack()
