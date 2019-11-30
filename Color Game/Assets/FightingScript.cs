@@ -5,7 +5,9 @@ using UnityEngine;
 public class FightingScript : MonoBehaviour
 {
     public GameObject snowball;
+    GameObject snowballClone;
     float fire_start_time;
+    public Transform camera;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,10 +17,12 @@ public class FightingScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.Q) && (Time.time - fire_start_time) >= 0.15f)
+        if (Input.GetKey(KeyCode.F) && (Time.time - fire_start_time) >= 0.15f)
         {
+            Debug.Log("Trouble55");
             fire_start_time = Time.time;
-            Instantiate(snowball, transform.position, transform.rotation);
+            snowballClone = Instantiate(snowball, transform.position, camera.rotation);
+            //snowballClone.GetComponent<PlayerSnowball>().playerTransform = transform;
         }
         
     }

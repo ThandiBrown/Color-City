@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ad903e3e51400b44be7a878c758e724, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 50
+  moveSpeed: 5
   jumpForce: 15
   gravityScale: 1
   controller: {fileID: 346206320895236474}

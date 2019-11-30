@@ -4,14 +4,19 @@ using UnityEngine;
 
 public class PlayerSnowball : MonoBehaviour
 {
-    public Transform playerTransform;
+    public Transform startTransform;
     public float firingAngle = 45.0f;
     public float gravityNum;
     Vector3 landing;
     // Start is called before the first frame update
     void Start()
     {
-        landing = new Vector3(transform.position.x + 6, transform.position.y-1, transform.position.z + 6);
+        float y = transform.position.y-1;
+        Debug.Log("T" + transform.position);
+        landing = transform.TransformPoint(new Vector3(0, 0, 4));
+        landing.y = y; 
+        Debug.Log("L" + landing);
+        startTransform = transform;
         StartCoroutine(Travel());
     }
 
@@ -25,7 +30,7 @@ public class PlayerSnowball : MonoBehaviour
     {
         
         // Move transform to the position of throwing object + add some offset if needed.
-        transform.position = playerTransform.position + new Vector3(0, 0.0f, 0);
+        //transform.position = playerTransform.position + new Vector3(0, 0.0f, 0);
 
         // Calculate distance to target
         float target_Distance = Vector3.Distance(transform.position, landing);
@@ -52,12 +57,12 @@ public class PlayerSnowball : MonoBehaviour
             transform.Translate(0, (Vy - (gravityNum * elapse_time)) * Time.deltaTime, Vx * Time.deltaTime);
 
             elapse_time += Time.deltaTime;
-            if (transform.position.y <= 0.1) Destroy(gameObject);
+            if (transform.position.y <= 0) Destroy(gameObject);
             yield return null;
 
         }
 
-        Debug.Log(transform.position.y + " finished");
+        Debug.Log("finished");
     }
 
     void OnTriggerEnter(Collider other)
