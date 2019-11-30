@@ -662,6 +662,8 @@ MonoBehaviour:
   controller: {fileID: 1868806787}
   jumpForce: 3
   gravityScale: 9.8
+  earthPiece: {fileID: 7222070575984040622, guid: 9af0e65b90d8d1f449ac41eacb6bfc5c,
+    type: 3}
 --- !u!143 &1868806787
 CharacterController:
   m_ObjectHideFlags: 0

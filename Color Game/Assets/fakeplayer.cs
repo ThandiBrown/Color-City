@@ -13,6 +13,8 @@ public class fakeplayer : MonoBehaviour
     public float jumpForce;
     public float gravityScale;
 
+    public GameObject earthPiece;
+    GameObject earthPieceClone;
     // Start is called before the first frame update
     void Start()
     {
@@ -39,6 +41,17 @@ public class fakeplayer : MonoBehaviour
             Destroy(stickClone);
             start = true;
         }
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            for (int i = -2; i < 3; i++)
+            {
+                earthPieceClone = Instantiate(earthPiece, new Vector3(transform.position.x + i*2, transform.position.y - 3, transform.position.z + 2), transform.rotation);
+                earthPieceClone.GetComponent<EarthPieceMovement>().player = transform.gameObject;
+            }
+            
+        }
+
 
         moveDirection = new Vector3(Input.GetAxis("Horizontal") * moveSpeed, moveDirection.y, Input.GetAxis("Vertical") * moveSpeed);
         controller.Move(moveDirection * Time.deltaTime);

@@ -7,7 +7,7 @@ public class FightingScript : MonoBehaviour
     public GameObject snowball;
     GameObject snowballClone;
     float fire_start_time;
-    public Transform camera;
+    public Transform camerar;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,7 +21,7 @@ public class FightingScript : MonoBehaviour
         {
             Debug.Log("Trouble55");
             fire_start_time = Time.time;
-            snowballClone = Instantiate(snowball, transform.position, camera.rotation);
+            snowballClone = Instantiate(snowball, transform.position, camerar.rotation);
             //snowballClone.GetComponent<PlayerSnowball>().playerTransform = transform;
         }
         
