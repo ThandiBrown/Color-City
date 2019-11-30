@@ -13,10 +13,8 @@ public class PlayerSnowball : MonoBehaviour
     {
         transform.eulerAngles = new Vector3(-2.5f, transform.eulerAngles.y, transform.eulerAngles.z);
         float y = transform.position.y-2;
-        Debug.Log("T" + transform.position);
         landing = transform.TransformPoint(new Vector3(0, 0, 10));
         landing.y = y; 
-        Debug.Log("L" + landing);
         startTransform = transform;
         StartCoroutine(Travel());
     }
@@ -62,12 +60,10 @@ public class PlayerSnowball : MonoBehaviour
             yield return null;
 
         }
-
-        Debug.Log("finished");
     }
 
     void OnTriggerEnter(Collider other)
     {
-        Debug.Log("ggggg");
+        //Debug.Log("ggggg");
     }
 }

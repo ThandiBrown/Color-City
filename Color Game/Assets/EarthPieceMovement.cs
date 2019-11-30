@@ -7,13 +7,12 @@ public class EarthPieceMovement : MonoBehaviour
     public GameObject player;
     Vector3 risePos, destPos;
     bool rise, goTowards;
-    public GameObject enemy;
     // Start is called before the first frame update
     void Start()
     {
         rise = true;
         risePos = new Vector3(transform.position.x, transform.position.y + 3, transform.position.z);
-        destPos = new Vector3(transform.position.x, transform.position.y + 3, transform.position.z + 20);
+        destPos = new Vector3(transform.position.x, transform.position.y + 3, transform.position.z + 40);
     }
 
     // Update is called once per frame
@@ -34,7 +33,7 @@ public class EarthPieceMovement : MonoBehaviour
 
         if (gameObject != null && goTowards)
         {
-            transform.position = Vector3.MoveTowards(transform.position, destPos, 25f * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, destPos, 60f * Time.deltaTime);
 
             if (transform.position.z >= destPos.z)
             {

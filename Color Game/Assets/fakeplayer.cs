@@ -15,6 +15,8 @@ public class fakeplayer : MonoBehaviour
 
     public GameObject earthPiece;
     GameObject earthPieceClone;
+    public Transform camerar;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -44,9 +46,10 @@ public class fakeplayer : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.E))
         {
+            Quaternion er = camerar.rotation;
             for (int i = -2; i < 3; i++)
             {
-                earthPieceClone = Instantiate(earthPiece, new Vector3(transform.position.x + i*2, transform.position.y - 3, transform.position.z + 2), transform.rotation);
+                earthPieceClone = Instantiate(earthPiece, new Vector3(transform.position.x + i*2, transform.position.y - 3, transform.position.z + 2), er);
                 earthPieceClone.GetComponent<EarthPieceMovement>().player = transform.gameObject;
             }
             
