@@ -4,22 +4,23 @@ using UnityEngine;
 
 public class EnemyThrow : MonoBehaviour
 {
-
-    public static bool go;
-    public GameObject theTarget;
-    public GameObject snowball;
     public float firingAngle = 45.0f;
     public float gravityNum;
     public float waitSec;
     public float rotationMultiplier;
-    public float enemyLevel;
-    public GameObject levelTrig;
+
+    public GameObject snowball;
+    public GameObject theTarget;
+    
     bool change = false;
-    Transform myTransform;
+    float snowballsThrown = 0;
+
     GameObject snowballClone;
+    Transform myTransform;
     Transform Target;
     Transform Projectile;
-    float snowballsThrown = 0;
+    
+
     public void ThrowSnow()
     {
         if (snowballsThrown != 3)
@@ -73,14 +74,12 @@ public class EnemyThrow : MonoBehaviour
 
         while (elapse_time < flightDuration)
         {
-            if (Projectile == null) break;
-            
-            Projectile.Translate(0, (Vy - (gravityNum * elapse_time)) * Time.deltaTime, Vx * Time.deltaTime);
-
+            if (Projectile != null)
+            {
+                Projectile.Translate(0, (Vy - (gravityNum * elapse_time)) * Time.deltaTime, Vx * Time.deltaTime);
+            }
             elapse_time += Time.deltaTime;
-
             yield return null;
-            
         }
         ThrowSnow();
     }
