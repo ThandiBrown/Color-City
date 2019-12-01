@@ -22,12 +22,14 @@ public class PinkStorm : MonoBehaviour
     {
         //transform.Rotate(rotSpeed * Time.deltaTime);
         
+        /*
         if (colliderTime != 0 && Time.time > colliderTime)
         {
             colliderTime = 0;
             GetComponent<SphereCollider>().enabled = true;
             Debug.Log("enable collider");
         }
+        */
 
         if (transform.position != player.transform.position)
         {
@@ -40,9 +42,13 @@ public class PinkStorm : MonoBehaviour
         
     }
 
-    private void onTriggerEnter(GameObject other)
+    void OnTriggerEnter(Collider other)
     {
-        Debug.Log("detected");
-        other.transform.Rotate(-90, transform.eulerAngles.y, transform.eulerAngles.z);
+        if(other.gameObject != player && !other.gameObject.GetComponent<StartP>().manDown)
+        {
+            Debug.Log("detected");
+            other.gameObject.GetComponent<StartP>().fallDown();
+        }
+        
     }
 }

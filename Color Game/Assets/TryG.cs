@@ -13,12 +13,14 @@ public class TryG : MonoBehaviour
     ParticleSystem p1Clone;
 
 
-    bool wasMoving = false;
-
+    bool wasMoving = false, setUp = true;
+    float setupTime;
+    float setupDone;
     // Start is called before the first frame update
     void Start()
     {
-        
+        setupTime = 4.5f;
+        setupDone = Time.time + setupTime;
     }
 
     // Update is called once per frame
@@ -33,6 +35,14 @@ public class TryG : MonoBehaviour
             
         }
 
+        if (Time.time > setupDone && p1Clone != null && setUp)
+        {
+            p1Clone.GetComponent<SphereCollider>().enabled = true;
+            Debug.Log("enabled setup collider");
+            setUp = false;
+        }
+
+        /*
         if (wasMoving)
         {
             if (Input.GetAxis("Horizontal") == 0 && Input.GetAxis("Vertical") == 0)
@@ -42,9 +52,10 @@ public class TryG : MonoBehaviour
                 Debug.Log("time set");
             }
         }
-
+        
         if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
         {
+            setUp = false;
             if(!wasMoving) Debug.Log("movement detected");
             p1Clone.GetComponent<PinkStorm>().colliderTime = 0;
             p1Clone.GetComponent<SphereCollider>().enabled = false;
@@ -54,5 +65,6 @@ public class TryG : MonoBehaviour
 
         moveDirection = new Vector3(Input.GetAxis("Horizontal") * moveSpeed, 0f, Input.GetAxis("Vertical") * moveSpeed);
         controller.Move(moveDirection * Time.deltaTime);
+        */
     }
 }
