@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 549132768905591258}
   - component: {fileID: 549132768905591259}
   - component: {fileID: 549132768905591256}
+  - component: {fileID: 327050137232939318}
   m_Layer: 0
   m_Name: Glow
   m_TagString: Untagged
@@ -866,7 +867,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 5
+      scalar: 2
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -4775,4 +4776,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fe2cebe2e446554582153523f98b30a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: {x: 0, y: 0, z: 100}
+  rotSpeed: {x: 0, y: 0, z: 300}
+  followSpeed: 500
+  player: {fileID: 0}
+  waitTime: 0
+  colliderTime: 0
+--- !u!135 &327050137232939318
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 549132768905591257}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 3.1
+  m_Center: {x: 0, y: 0, z: 0}

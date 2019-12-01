@@ -10,6 +10,11 @@ public class TryG : MonoBehaviour
     public CharacterController controller;
     Vector3 moveDirection;
     public ParticleSystem p1;
+    ParticleSystem p1Clone;
+
+
+    bool wasMoving = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -21,10 +26,29 @@ public class TryG : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.M))
         {
+
+            p1Clone = Instantiate(p1, transform.position, Quaternion.Euler(-90, 0, 0));
+            p1Clone.GetComponent<PinkStorm>().player = transform.gameObject;
+            p1Clone.Play();
             
-                Instantiate(p1, transform.position, Quaternion.Euler(-90, 0, 0));
-                p1.GetComponent<PinkStorm>().player = transform.gameObject;
-                p1.Play();
+        }
+
+        if (wasMoving)
+        {
+            if (Input.GetAxis("Horizontal") == 0 && Input.GetAxis("Vertical") == 0)
+            {
+                wasMoving = false;
+                p1Clone.GetComponent<PinkStorm>().colliderTime = Time.time + p1Clone.GetComponent<PinkStorm>().waitTime;
+                Debug.Log("time set");
+            }
+        }
+
+        if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
+        {
+            if(!wasMoving) Debug.Log("movement detected");
+            p1Clone.GetComponent<PinkStorm>().colliderTime = 0;
+            p1Clone.GetComponent<SphereCollider>().enabled = false;
+            wasMoving = true;
             
         }
 
