@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5161587339576260850}
   - component: {fileID: 3157907053861935589}
+  - component: {fileID: 502372514284920699}
   m_Layer: 0
   m_Name: EarthPiece
   m_TagString: Untagged
@@ -46,6 +47,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 0.9501922, z: 1}
   m_Center: {x: 0, y: 0.24055088, z: 0}
+--- !u!114 &502372514284920699
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7222070575984040622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32fb8f43caf3ab54eaaf0a1c5580d8f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
 --- !u!1 &8419924244016823048
 GameObject:
   m_ObjectHideFlags: 0

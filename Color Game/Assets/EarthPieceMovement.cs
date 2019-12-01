@@ -12,7 +12,9 @@ public class EarthPieceMovement : MonoBehaviour
     {
         rise = true;
         risePos = new Vector3(transform.position.x, transform.position.y + 3, transform.position.z);
-        destPos = new Vector3(transform.position.x, transform.position.y + 3, transform.position.z + 40);
+        destPos = transform.TransformPoint(new Vector3(0, 0, 20));
+        destPos = new Vector3(destPos.x, destPos.y + 3, destPos.z);
+        Debug.Log("dp: " + destPos);
     }
 
     // Update is called once per frame
@@ -35,7 +37,7 @@ public class EarthPieceMovement : MonoBehaviour
         {
             transform.position = Vector3.MoveTowards(transform.position, destPos, 60f * Time.deltaTime);
 
-            if (transform.position.z >= destPos.z)
+            if (transform.position.z >= destPos.z-1)
             {
                 Destroy(gameObject);
             }
@@ -43,7 +45,7 @@ public class EarthPieceMovement : MonoBehaviour
         else
         {
             goTowards = false;
-            Debug.Log("hit");
+            //Debug.Log("hit");
         }
     }
 

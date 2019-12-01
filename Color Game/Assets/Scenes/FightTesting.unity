@@ -232,37 +232,37 @@ PrefabInstance:
     - target: {fileID: 3652272416640254339, guid: d3e4d0f51020b454f9a32e9833a4fa90,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 10.85
+      value: 10.96
       objectReference: {fileID: 0}
     - target: {fileID: 3652272416640254339, guid: d3e4d0f51020b454f9a32e9833a4fa90,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.25
+      value: 2.32
       objectReference: {fileID: 0}
     - target: {fileID: 3652272416640254339, guid: d3e4d0f51020b454f9a32e9833a4fa90,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 5.25
+      value: 8.07
       objectReference: {fileID: 0}
     - target: {fileID: 3652272416640254339, guid: d3e4d0f51020b454f9a32e9833a4fa90,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.14268005
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3652272416640254339, guid: d3e4d0f51020b454f9a32e9833a4fa90,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3652272416640254339, guid: d3e4d0f51020b454f9a32e9833a4fa90,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3652272416640254339, guid: d3e4d0f51020b454f9a32e9833a4fa90,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.98976886
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3652272416640254339, guid: d3e4d0f51020b454f9a32e9833a4fa90,
         type: 3}
@@ -272,7 +272,7 @@ PrefabInstance:
     - target: {fileID: 3652272416640254339, guid: d3e4d0f51020b454f9a32e9833a4fa90,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 16.406
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3652272416640254339, guid: d3e4d0f51020b454f9a32e9833a4fa90,
         type: 3}
@@ -297,7 +297,7 @@ PrefabInstance:
     - target: {fileID: 3652272416640254338, guid: d3e4d0f51020b454f9a32e9833a4fa90,
         type: 3}
       propertyPath: useOffsetValues
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d3e4d0f51020b454f9a32e9833a4fa90, type: 3}
@@ -353,7 +353,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   camerar: {fileID: 0}
-  earthPiece: {fileID: 7222070575984040622, guid: 9af0e65b90d8d1f449ac41eacb6bfc5c,
+  earthPiece: {fileID: 5238967454138021189, guid: e30871b1adb64e04ea727a32f4e46ebb,
     type: 3}
   fireRate: 1
   speed: 30
