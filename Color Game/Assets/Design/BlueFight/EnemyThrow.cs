@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyThrow : MonoBehaviour
 {
-    public float numBalls = 3;
+    public float numBalls = 30;
     public float firingAngle = 45.0f;
     public float gravityNum;
     public float waitSec;
@@ -21,7 +21,9 @@ public class EnemyThrow : MonoBehaviour
     Transform myTransform;
     Transform Target;
     Transform Projectile;
-    
+
+    public bool moveLeft, moveRight;
+
 
     public void ThrowSnow()
     {

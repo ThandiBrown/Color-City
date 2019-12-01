@@ -8,7 +8,6 @@ public class ThrowBehav : MonoBehaviour
     public GameObject player;
 
     Transform enemy1, enemy2, enemy3, enemy4;
-    public Transform level2;
     bool look = false, enemyCycleEnd = false;
     Transform[] enemies = new Transform[8];
     // Start is called before the first frame update
@@ -17,13 +16,16 @@ public class ThrowBehav : MonoBehaviour
         SnowballScript.totalSnowballsDestroyed = 6;
         count = 0;
         
-
     }
 
     // Update is called once per frame
     void Update()
     {
         if (SnowballScript.totalSnowballsDestroyed == 6 && count == 1)
+        {
+            player.transform.Translate(Vector3.right * Time.deltaTime * 4);
+        }
+        if (SnowballScript.totalSnowballsDestroyed == 6 && count == 2)
         {
             player.transform.Translate(Vector3.right * Time.deltaTime * 4);
         }
@@ -47,8 +49,9 @@ public class ThrowBehav : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         count++;
+        Debug.Log("ppppp " + count);
         gameObject.GetComponent<Collider>().enabled = false;
-        if(count == 2)
+        if(count == 3)
         {
             MakeThrow();
         }
