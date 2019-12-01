@@ -11,7 +11,7 @@ public class PlayerSnowball : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        transform.eulerAngles = new Vector3(-2.5f, transform.eulerAngles.y, transform.eulerAngles.z);
+        //transform.eulerAngles = new Vector3(-2.5f, transform.eulerAngles.y, transform.eulerAngles.z);
         float y = transform.position.y-2;
         landing = transform.TransformPoint(new Vector3(0, 0, 10));
         landing.y = y; 

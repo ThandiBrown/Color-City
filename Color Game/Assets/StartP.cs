@@ -7,10 +7,11 @@ public class StartP : MonoBehaviour
     public float moveSpeed;
     public float gravityScale;
     public float jumpForce;
-    public CharacterController controller;
+    //public CharacterController controller;
     Vector3 moveDirection;
     public bool manDown = false;
-    public float wakeUpTime;
+    float wakeUpTime;
+    public Transform target;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,23 +25,27 @@ public class StartP : MonoBehaviour
         {
             wakeUpTime = 0;
             transform.Rotate(90, transform.eulerAngles.y, transform.eulerAngles.z);
-            controller.enabled = false;
-            controller.transform.position = new Vector3(controller.transform.position.x, 1, controller.transform.position.z);
-            controller.enabled = true;
-            moveSpeed = 5;
+            //controller.enabled = false;
+            transform.position = new Vector3(transform.position.x, 1, transform.position.z);
+            //controller.transform.position = new Vector3(controller.transform.position.x, 1, controller.transform.position.z);
+            //controller.enabled = true;
+            moveSpeed = 2;
         }
-        moveDirection = new Vector3(Input.GetAxis("Horizontal") * moveSpeed, 0f, Input.GetAxis("Vertical") * moveSpeed);
-        controller.Move(moveDirection * Time.deltaTime);
+
+        transform.position = Vector3.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
+        //moveDirection = new Vector3(Input.GetAxis("Horizontal") * moveSpeed, 0f, Input.GetAxis("Vertical") * moveSpeed);
+        //controller.Move(moveDirection * Time.deltaTime);
     }
 
-    public void fallDown()
+    public void FallDown()
     {
-        wakeUpTime = Time.time + 4f;
+        wakeUpTime = Time.time + 15f;
         manDown = true;
         transform.Rotate(-90, transform.eulerAngles.y, transform.eulerAngles.z);
-        controller.enabled = false;
-        controller.transform.position = new Vector3(controller.transform.position.x, 0.5f, controller.transform.position.z);
-        controller.enabled = true;
+        //controller.enabled = false;
+        transform.position = new Vector3(transform.position.x, 0.5f, transform.position.z);
+        //controller.transform.position = new Vector3(controller.transform.position.x, 0.5f, controller.transform.position.z);
+        //controller.enabled = true;
         moveSpeed = 0;
     }
 }

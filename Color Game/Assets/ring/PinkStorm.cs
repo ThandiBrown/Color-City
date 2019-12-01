@@ -14,7 +14,8 @@ public class PinkStorm : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        waitTime = 4.5f;
+        waitTime = 4f;
+        
     }
 
     // Update is called once per frame
@@ -22,14 +23,14 @@ public class PinkStorm : MonoBehaviour
     {
         //transform.Rotate(rotSpeed * Time.deltaTime);
         
-        /*
+        
         if (colliderTime != 0 && Time.time > colliderTime)
         {
             colliderTime = 0;
             GetComponent<SphereCollider>().enabled = true;
             Debug.Log("enable collider");
         }
-        */
+        
 
         if (transform.position != player.transform.position)
         {
@@ -47,7 +48,7 @@ public class PinkStorm : MonoBehaviour
         if(other.gameObject != player && !other.gameObject.GetComponent<StartP>().manDown)
         {
             Debug.Log("detected");
-            other.gameObject.GetComponent<StartP>().fallDown();
+            other.gameObject.GetComponent<StartP>().FallDown();
         }
         
     }

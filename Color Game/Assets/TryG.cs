@@ -16,6 +16,7 @@ public class TryG : MonoBehaviour
     bool wasMoving = false, setUp = true;
     float setupTime;
     float setupDone;
+    bool sleepFieldOn = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -32,39 +33,44 @@ public class TryG : MonoBehaviour
             p1Clone = Instantiate(p1, transform.position, Quaternion.Euler(-90, 0, 0));
             p1Clone.GetComponent<PinkStorm>().player = transform.gameObject;
             p1Clone.Play();
-            
+            sleepFieldOn = true;
         }
-
-        if (Time.time > setupDone && p1Clone != null && setUp)
+        if (sleepFieldOn)
         {
-            p1Clone.GetComponent<SphereCollider>().enabled = true;
-            Debug.Log("enabled setup collider");
-            setUp = false;
-        }
-
-        /*
-        if (wasMoving)
-        {
-            if (Input.GetAxis("Horizontal") == 0 && Input.GetAxis("Vertical") == 0)
+            if (Time.time > setupDone && p1Clone != null && setUp)
             {
-                wasMoving = false;
-                p1Clone.GetComponent<PinkStorm>().colliderTime = Time.time + p1Clone.GetComponent<PinkStorm>().waitTime;
-                Debug.Log("time set");
+                p1Clone.GetComponent<SphereCollider>().enabled = true;
+                Debug.Log("enabled setup collider");
+                setUp = false;
+            }
+
+
+            if (wasMoving)
+            {
+                if (Input.GetAxis("Horizontal") == 0 && Input.GetAxis("Vertical") == 0)
+                {
+                    wasMoving = false;
+                    p1Clone.GetComponent<PinkStorm>().colliderTime = Time.time + p1Clone.GetComponent<PinkStorm>().waitTime;
+                    Debug.Log("time set");
+                }
+            }
+
+            if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
+            {
+                setUp = false;
+                if (!wasMoving) Debug.Log("movement detected");
+                p1Clone.GetComponent<PinkStorm>().colliderTime = 0;
+                p1Clone.GetComponent<SphereCollider>().enabled = false;
+
+                wasMoving = true;
+
             }
         }
-        
-        if (Input.GetAxis("Horizontal") != 0 || Input.GetAxis("Vertical") != 0)
-        {
-            setUp = false;
-            if(!wasMoving) Debug.Log("movement detected");
-            p1Clone.GetComponent<PinkStorm>().colliderTime = 0;
-            p1Clone.GetComponent<SphereCollider>().enabled = false;
-            wasMoving = true;
-            
-        }
 
-        moveDirection = new Vector3(Input.GetAxis("Horizontal") * moveSpeed, 0f, Input.GetAxis("Vertical") * moveSpeed);
-        controller.Move(moveDirection * Time.deltaTime);
-        */
+        
+
+       // moveDirection = new Vector3(Input.GetAxis("Horizontal") * moveSpeed, 0f, Input.GetAxis("Vertical") * moveSpeed);
+        //controller.Move(moveDirection * Time.deltaTime);
+        
     }
 }
