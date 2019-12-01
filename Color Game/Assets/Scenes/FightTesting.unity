@@ -232,7 +232,7 @@ PrefabInstance:
     - target: {fileID: 3652272416640254339, guid: d3e4d0f51020b454f9a32e9833a4fa90,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 10.96
+      value: 19.01
       objectReference: {fileID: 0}
     - target: {fileID: 3652272416640254339, guid: d3e4d0f51020b454f9a32e9833a4fa90,
         type: 3}
@@ -288,7 +288,7 @@ PrefabInstance:
         type: 3}
       propertyPath: target
       value: 
-      objectReference: {fileID: 1470200567}
+      objectReference: {fileID: 1593894899}
     - target: {fileID: 3652272416640254338, guid: d3e4d0f51020b454f9a32e9833a4fa90,
         type: 3}
       propertyPath: rotateSpeed
@@ -314,7 +314,6 @@ GameObject:
   - component: {fileID: 1470200565}
   - component: {fileID: 1470200564}
   - component: {fileID: 1470200562}
-  - component: {fileID: 1470200563}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -340,23 +339,6 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1470200563
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1470200561}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a80c469f1f6c804d9549a5febcb97a7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  camerar: {fileID: 0}
-  earthPiece: {fileID: 5238967454138021189, guid: e30871b1adb64e04ea727a32f4e46ebb,
-    type: 3}
-  fireRate: 1
-  speed: 30
 --- !u!65 &1470200564
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -542,7 +524,7 @@ MonoBehaviour:
   snowball: {fileID: 4704116072262537508, guid: 40e5c916daeded046a9594dbbbcdf2d1,
     type: 3}
   stick: {fileID: 8720685955150913578, guid: ceb3c3d9dda79c24681c58e4a2eb5be8, type: 3}
-  earthPiece: {fileID: 7222070575984040622, guid: 9af0e65b90d8d1f449ac41eacb6bfc5c,
+  earthPiece: {fileID: 5238967454138021189, guid: e30871b1adb64e04ea727a32f4e46ebb,
     type: 3}
   moveSpeed: 3
   gravityScale: 9.8

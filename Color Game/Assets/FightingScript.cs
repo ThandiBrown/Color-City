@@ -23,7 +23,7 @@ public class FightingScript : MonoBehaviour
     Vector3 moveDirection;
     bool start = true;
     float fire_start_time;
-
+    Transform cameraRep;
 
 
     // Start is called before the first frame update
@@ -59,14 +59,26 @@ public class FightingScript : MonoBehaviour
             start = true;
         }
 
-        if (Input.GetKeyDown(KeyCode.J))
+        if (Input.GetKeyDown(KeyCode.E))
         {
+            cameraRep = Camera.main.transform;
+            earthPieceClone = Instantiate(earthPiece, transform.position + cameraRep.forward * 2.5f, Quaternion.Euler(0f, cameraRep.transform.eulerAngles.y, 0f));
+            earthPieceClone.transform.position = new Vector3(earthPieceClone.transform.position.x, 0.235f - 2.7f, earthPieceClone.transform.position.z);
+            Debug.Log("sp: " + earthPieceClone.transform.position);
+
+            /*
+            cameraRep = Camera.main.transform;
+            cameraRep.transform.eulerAngles = new Vector3(-2.5f, cameraRep.transform.eulerAngles.y, cameraRep.transform.eulerAngles.z);
+            earthPieceClone = Instantiate(earthPiece, transform.position + cameraRep.forward * 2.5f, Quaternion.Euler(0f, cameraRep.transform.eulerAngles.y, 0f));
+            earthPieceClone.transform.position = new Vector3(earthPieceClone.transform.position.x, 0.235f - 2.7f, earthPieceClone.transform.position.z);
+            Debug.Log("sp: " + earthPieceClone.transform.position);
+            /*
             for (int i = -2; i < 3; i++)
             {
                 earthPieceClone = Instantiate(earthPiece, new Vector3(transform.position.x + i * 2, transform.position.y - 3, transform.position.z + 2), transform.rotation);
                 earthPieceClone.GetComponent<EarthPieceMovement>().player = transform.gameObject;
             }
-
+            */
         }
 
         moveDirection = new Vector3(Input.GetAxis("Horizontal") * moveSpeed, 0f, 0f);
