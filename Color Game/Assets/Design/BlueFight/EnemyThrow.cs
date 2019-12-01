@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class EnemyThrow : MonoBehaviour
 {
+    public float numBalls = 3;
     public float firingAngle = 45.0f;
     public float gravityNum;
     public float waitSec;
     public float rotationMultiplier;
+    public bool finishedThrowing;
 
     public GameObject snowball;
     public GameObject theTarget;
@@ -23,7 +25,7 @@ public class EnemyThrow : MonoBehaviour
 
     public void ThrowSnow()
     {
-        if (snowballsThrown != 3)
+        if (snowballsThrown != numBalls)
         {
             snowballClone = Instantiate(snowball, transform.position, transform.rotation);
             myTransform = transform;
@@ -32,6 +34,11 @@ public class EnemyThrow : MonoBehaviour
             Debug.Log("Ball: " + (snowballsThrown+1));
             StartCoroutine(SimulateProjectile());
         }
+        else
+        {
+            finishedThrowing = true;
+        }
+
     }
     
 
@@ -88,6 +95,7 @@ public class EnemyThrow : MonoBehaviour
     public void StartThrowing()
     {
         snowballsThrown = 0;
+        finishedThrowing = false;
         Collider selfCollider = GetComponent<Collider>();
         selfCollider.enabled = false;
         ThrowSnow();

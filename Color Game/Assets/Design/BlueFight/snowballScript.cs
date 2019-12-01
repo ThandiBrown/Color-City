@@ -23,7 +23,7 @@ public class SnowballScript : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
 
-        if (Physics.Raycast(ray, out hit, 100.0f))
+        if (Physics.Raycast(ray, out hit, 300.0f))
         {
             Debug.Log(hit.transform.name);
             if (hit.transform.name == "Snowball(Clone)")
@@ -41,7 +41,7 @@ public class SnowballScript : MonoBehaviour
         {
            Destroy(gameObject);
             totalSnowballsDestroyed++;
-            Debug.Log("it is a hit : " + other.gameObject.name + " " + totalSnowballsDestroyed);
+            //Debug.Log("it is a hit : " + other.gameObject.name + " " + totalSnowballsDestroyed);
         }
     }
 }
