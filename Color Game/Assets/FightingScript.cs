@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class FightingScript : MonoBehaviour
 {
-
     public Transform camerar;
     public CharacterController controller;
 
@@ -81,7 +80,7 @@ public class FightingScript : MonoBehaviour
             */
         }
 
-        moveDirection = new Vector3(Input.GetAxis("Horizontal") * moveSpeed, 0f, 0f);
+        moveDirection = new Vector3(Input.GetAxis("Horizontal") * moveSpeed, 0f, Input.GetAxis("Vertical"));
         controller.Move(moveDirection * Time.deltaTime);
     }
 }

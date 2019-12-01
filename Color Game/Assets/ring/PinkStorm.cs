@@ -5,6 +5,7 @@ using UnityEngine;
 public class PinkStorm : MonoBehaviour
 {
     public Vector3 speed;
+    public GameObject player;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,5 +16,12 @@ public class PinkStorm : MonoBehaviour
     void Update()
     {
         transform.Rotate(speed * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, player.transform.position, 5f * Time.deltaTime);
+    }
+
+    private void OnParticleCollision(GameObject other)
+    {
+        Debug.Log("detected");
+        other.transform.Rotate(-90, transform.eulerAngles.y, transform.eulerAngles.z);
     }
 }
