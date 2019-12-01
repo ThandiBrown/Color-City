@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StartP : MonoBehaviour
+public class EnemyFollowingScript : MonoBehaviour
 {
     public float moveSpeed;
     public float gravityScale;
