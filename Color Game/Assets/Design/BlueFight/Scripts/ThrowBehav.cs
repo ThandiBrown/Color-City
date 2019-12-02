@@ -11,6 +11,7 @@ public class ThrowBehav : MonoBehaviour
     float totalSnowballsDestroyed;
     Transform enemy1, enemy2, enemy3, enemy4;
     bool detectEndOfThrowing = false, enemyCycleEnd = false, shakeItUp = false;
+    static bool handlingRespawn = false;
     Transform[] enemies = new Transform[8];
     static Collider currCollider;
     static GameObject theObj;
@@ -34,9 +35,13 @@ public class ThrowBehav : MonoBehaviour
             LevelPassScript.entered = false;
         }
 
-        if (CharacterForBlue.hitCount >= 51)
+        if (CharacterForBlue.hitCount >= 27)
         {
-            RespawnCharacter();
+            if (!handlingRespawn)
+            {
+                RespawnCharacter();
+                handlingRespawn = true;
+            }
         }
         else
         {
@@ -96,6 +101,12 @@ public class ThrowBehav : MonoBehaviour
     {
         if (!moveItBack)
         {
+            if (handlingRespawn)
+            {
+                CharacterForBlue.hitCount = 0;
+                Debug.Log("dirty bit");
+                handlingRespawn = false;
+            }
             count++;
             theObj = transform.gameObject;
             if (count != 5)
@@ -159,11 +170,13 @@ public class ThrowBehav : MonoBehaviour
     {
         Debug.Log("HitCount Reached");
 
+        count = 0;
+        totalSnowballsDestroyed = 0;
         moveItBack = true;
         detectEndOfThrowing = false;
 
         count = 1;
-        CharacterForBlue.hitCount = 0;
+        
         player.transform.position = new Vector3(12.25f, 1f, 5.12f);
         
 
@@ -184,5 +197,7 @@ public class ThrowBehav : MonoBehaviour
 
         GetComponent<Collider>().enabled = true;
         moveItBack = false;
+        //CharacterForBlue.hitCount = 0;
+        //handlingRespawn = false;
     }
 }

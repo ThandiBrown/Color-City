@@ -34,7 +34,7 @@ public class SnowballScript : MonoBehaviour
                 endSparksClone.Play();
                 Destroy(hit.transform.gameObject);
                 totalSnowballsDestroyed++;
-                Debug.Log("it is a ray : " + totalSnowballsDestroyed);
+               // Debug.Log("it is a ray : " + totalSnowballsDestroyed);
             }
         }
     }

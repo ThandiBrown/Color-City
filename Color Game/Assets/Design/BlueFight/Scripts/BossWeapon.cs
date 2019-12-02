@@ -6,7 +6,7 @@ public class BossWeapon : MonoBehaviour
 {
     public GameObject player;
     public bool level1, level2, lastBallEnded;
-    static float fcount, ycount;
+    public static float fcount, ycount;
     
     // Start is called before the first frame update
     void Start()

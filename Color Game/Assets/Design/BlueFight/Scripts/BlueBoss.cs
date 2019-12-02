@@ -80,6 +80,21 @@ public class BlueBoss : MonoBehaviour
             bossWeaponClone.GetComponent<BossWeapon>().level2 = true;
             Invoke("ThrowLevelOne", 0.15f);
         }
+        else if(attack2 && count >= 40)
+        {
+            Debug.Log("This is the ycount hahahahahah" + BossWeapon.ycount);
+            if (BossWeapon.ycount >= 20)
+            {
+                transform.position = new Vector3(120.59f, 3.51f, 5.07f);
+                transform.eulerAngles = new Vector3(-26.872f, -98.11501f, 7.748f);
+                CharacterForBlue.bouncy = true;
+            }
+            else
+            {
+                count = 0;
+                globalattack1 = true;
+            }
+        }
 
     }
 
