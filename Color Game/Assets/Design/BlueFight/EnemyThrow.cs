@@ -18,7 +18,7 @@ public class EnemyThrow : MonoBehaviour
     bool change = false;
     float snowballsThrown = 0;
 
-    GameObject snowballClone;
+    public GameObject snowballClone;
     Transform myTransform;
     Transform Target;
     Transform Projectile;
@@ -57,7 +57,6 @@ public class EnemyThrow : MonoBehaviour
         }
         else
         {
-            Debug.Log("eee " + transform.childCount);
             finishedThrowing = true;
         }
 
@@ -66,6 +65,7 @@ public class EnemyThrow : MonoBehaviour
 
     IEnumerator SimulateProjectile()
     {
+        //snowballClone.transform.parent = gameObject.transform;
         snowballsThrown++;
         if (change)
         {
@@ -104,6 +104,7 @@ public class EnemyThrow : MonoBehaviour
         snowballClone.GetComponent<MeshRenderer>().enabled = true;
         while (elapse_time < flightDuration)
         {
+            
             if (Projectile != null)
             {
                 Projectile.Translate(0, (Vy - (gravityNum * elapse_time)) * Time.deltaTime, Vx * Time.deltaTime);
@@ -111,6 +112,8 @@ public class EnemyThrow : MonoBehaviour
             elapse_time += Time.deltaTime;
             yield return null;
         }
+
+       
 
         if(!moveLeft && !moveRight) ThrowSnow();
         if (moveRight)

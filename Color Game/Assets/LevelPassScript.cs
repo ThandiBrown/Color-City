@@ -19,7 +19,6 @@ public class LevelPassScript : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        Debug.Log("cool");
         entered = true;
     }
 }

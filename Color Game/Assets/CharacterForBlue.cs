@@ -1,11 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class CharacterForBlue : MonoBehaviour
 {
     public bool colorChange;
-    public float hitCount;
+    public static float hitCount = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,10 +23,20 @@ public class CharacterForBlue : MonoBehaviour
             Invoke("returnColor", 0.05f);
             hitCount++;
         }
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Invoke("GoToBase", 1f);
+        }
     }
 
     void returnColor()
     {
         GetComponent<Renderer>().material.color = Color.white;
+    }
+
+    void GoToBase()
+    {
+        SceneManager.LoadScene("MainTown");
     }
 }
