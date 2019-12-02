@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &9169883925805301941
+--- !u!1 &7741590668644417404
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,47 +8,47 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 9169883925805301937}
-  - component: {fileID: 9169883925805301942}
-  - component: {fileID: 9169883925805301943}
-  - component: {fileID: 9169883925805301940}
-  - component: {fileID: 4483178406940091675}
+  - component: {fileID: 1466630259917445764}
+  - component: {fileID: 9075793831940443706}
+  - component: {fileID: 5747924335057873468}
+  - component: {fileID: 8859235293247528693}
+  - component: {fileID: 6645773843519083550}
   m_Layer: 0
-  m_Name: BlueBoss
+  m_Name: BossWeapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &9169883925805301937
+--- !u!4 &1466630259917445764
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9169883925805301941}
-  m_LocalRotation: {x: 0, y: -0.5, z: 0, w: 0.8660254}
-  m_LocalPosition: {x: 91.09, y: 7.86, z: 4.71}
-  m_LocalScale: {x: 8, y: 8, z: 8}
+  m_GameObject: {fileID: 7741590668644417404}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 87.97, y: 7.37, z: 4.93}
+  m_LocalScale: {x: 4, y: 4, z: 4}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: -60, z: 0}
---- !u!33 &9169883925805301942
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &9075793831940443706
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9169883925805301941}
-  m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &9169883925805301943
+  m_GameObject: {fileID: 7741590668644417404}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &5747924335057873468
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9169883925805301941}
+  m_GameObject: {fileID: 7741590668644417404}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -59,7 +59,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d421311e6bcf47f4a8072aa394d1f6bc, type: 2}
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -80,35 +80,32 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!136 &9169883925805301940
-CapsuleCollider:
+--- !u!135 &8859235293247528693
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9169883925805301941}
+  m_GameObject: {fileID: 7741590668644417404}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
+  serializedVersion: 2
   m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &4483178406940091675
+--- !u!114 &6645773843519083550
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9169883925805301941}
+  m_GameObject: {fileID: 7741590668644417404}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd0aa835e53a16c46b0bcff35cbb1e04, type: 3}
+  m_Script: {fileID: 11500000, guid: 244ab2eeb02faf04caabf24231e84406, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  idle: 0
-  attack1: 0
-  attack2: 0
-  attack3: 0
-  bossWeapon: {fileID: 7741590668644417404, guid: 72946bb20e5815548bb349de871c0a60,
-    type: 3}
+  target: {fileID: 0}
+  level1: 0
+  level2: 0
+  level3: 0
