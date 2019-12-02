@@ -173,6 +173,12 @@ public class ThrowBehav : MonoBehaviour
             enemies[i] = theObj.transform.GetChild(i);
             if (enemies[i].gameObject.GetComponent<EnemyThrow>().snowballClone != null) enemies[i].gameObject.GetComponent<EnemyThrow>().snowballClone.SetActive(false);
             enemies[i].gameObject.SetActive(false);
+            if(theObj.name == "LevelFourEnemies")
+            {
+                enemies[i].gameObject.GetComponent<EnemyThrow>().wasBouncy = false;
+                enemies[i].gameObject.GetComponent<EnemyThrow>().bouncy = false;
+                enemies[i].gameObject.transform.position = enemies[i].gameObject.GetComponent<EnemyThrow>().orgPos;
+            }
             enemies[i].gameObject.SetActive(true);
         }
 

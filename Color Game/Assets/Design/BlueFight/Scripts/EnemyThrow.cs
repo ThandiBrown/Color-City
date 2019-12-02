@@ -25,11 +25,11 @@ public class EnemyThrow : MonoBehaviour
 
     public bool moveLeft, moveRight;
     bool makeMoveL, makeMoveR, changeDir = true;
-    Vector3 way1, way2, orgPos;
+    public Vector3 way1, way2, orgPos;
     Vector3 up, down;
 
     static Vector3 orgPosL, orgPosR;
-    bool bouncy;
+    public bool bouncy;
     public bool wasBouncy;
 
     void Start()
@@ -37,6 +37,7 @@ public class EnemyThrow : MonoBehaviour
         orgPos = transform.position;
         up = new Vector3(transform.position.x, transform.position.y+1, transform.position.z);
         bouncy = false;
+        wasBouncy = false;
     }
 
     public void ThrowSnow()
