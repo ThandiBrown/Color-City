@@ -12,18 +12,24 @@ public class ThrowBehav : MonoBehaviour
     Transform enemy1, enemy2, enemy3, enemy4;
     bool look = false, enemyCycleEnd = false, shakeItUp = false;
     Transform[] enemies = new Transform[8];
-    
+    static Collider currCollider;
     // Start is called before the first frame update
     void Start()
     {
         totalSnowballsDestroyed = 4;
         count = 0;
-        
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (LevelPassScript.entered)
+        {
+            Debug.Log(currCollider.gameObject.name);
+            currCollider.enabled = true;
+            LevelPassScript.entered = false;
+        }
+
         if (totalSnowballsDestroyed == 6 && count == 1)
         {
             player.transform.Translate(Vector3.right * Time.deltaTime * 8);
@@ -76,7 +82,8 @@ public class ThrowBehav : MonoBehaviour
         if (count != 5)
         {
             Debug.Log("ppppp " + count);
-            gameObject.GetComponent<Collider>().enabled = false;
+            currCollider = gameObject.GetComponent<Collider>();
+            currCollider.enabled = false;
             MakeThrow();
         }
         else
@@ -91,7 +98,8 @@ public class ThrowBehav : MonoBehaviour
         
 
     }
-
+    
+    
     void MakeThrow()
     {
         Debug.Log("eee " + transform.childCount);
@@ -109,6 +117,7 @@ public class ThrowBehav : MonoBehaviour
     void ShakeAndCont()
     {
         boss.GetComponent<BlueBoss>().LevelBegin();
+        
         if (count == 1) totalSnowballsDestroyed = 6;
         if (count == 2) totalSnowballsDestroyed = 8;
         if (count == 3) totalSnowballsDestroyed = 10;
