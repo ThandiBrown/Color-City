@@ -8,6 +8,7 @@ public class EnemyThrow : MonoBehaviour
     public float firingAngle;
     public float gravityNum;
     public float waitSec;
+    public float rotationAdder;
     public float rotationMultiplier;
     public bool finishedThrowing;
 
@@ -63,7 +64,8 @@ public class EnemyThrow : MonoBehaviour
         if (change)
         {
             // Short delay added before Projectile is thrown
-            yield return new WaitForSeconds(waitSec * rotationMultiplier);
+            if(rotationMultiplier != 1 || rotationAdder == 0)yield return new WaitForSeconds(waitSec * rotationMultiplier);
+            if (rotationAdder != 0) yield return new WaitForSeconds(waitSec + rotationAdder);
             change = false;
         }
         else

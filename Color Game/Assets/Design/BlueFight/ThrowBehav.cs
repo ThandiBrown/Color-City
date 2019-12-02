@@ -29,6 +29,11 @@ public class ThrowBehav : MonoBehaviour
         {
             player.transform.Translate(Vector3.right * Time.deltaTime * 4);
         }
+        if (SnowballScript.totalSnowballsDestroyed == 6 && count == 3)
+        {
+            player.transform.Translate(Vector3.right * Time.deltaTime * 4);
+        }
+
         if (look)
         {
             enemyCycleEnd = enemies[0].GetComponent<EnemyThrow>().finishedThrowing;
@@ -36,10 +41,10 @@ public class ThrowBehav : MonoBehaviour
             {
                 enemyCycleEnd = enemyCycleEnd && enemies[i].GetComponent<EnemyThrow>().finishedThrowing;
             }
-            if (count > 2 && enemyCycleEnd)
+            if (count > 4 && enemyCycleEnd)
             {
                 Debug.Log("it's a new one");
-                Invoke("MakeThrow", 2f);
+                Invoke("MakeThrow", 15f);
                 count--;
             }
         }
@@ -51,7 +56,7 @@ public class ThrowBehav : MonoBehaviour
         count++;
         Debug.Log("ppppp " + count);
         gameObject.GetComponent<Collider>().enabled = false;
-        if(count == 3)
+        if(count == 4)
         {
             MakeThrow();
         }
@@ -60,6 +65,7 @@ public class ThrowBehav : MonoBehaviour
 
     void MakeThrow()
     {
+        Debug.Log("eeeee " + transform.childCount);
         for (int i = 0; i < transform.childCount; i++)
         {
             enemies[i]  = transform.GetChild(i);
