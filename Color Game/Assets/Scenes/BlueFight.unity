@@ -503,6 +503,7 @@ MonoBehaviour:
   shakeAmount: 0.7
   decreaseFactor: 1
   pie: 1
+  once: 0
 --- !u!4 &1865370941 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 713467732203711528, guid: d9dfce5c64692ce4fb243b7dec208d97,
@@ -1024,6 +1025,20 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 2957304854325994481}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5019827595890785656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5019827595890785653}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29f102987080ab0409b71df15f8d8c46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colorChange: 0
+  hitCount: 0
 --- !u!1001 &5050601249676887665
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1239,6 +1254,6 @@ PrefabInstance:
         type: 3}
       propertyPath: target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 5019827595890785653}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9430198249da26249926570433ea4a25, type: 3}

@@ -10,7 +10,7 @@ public class ThrowBehav : MonoBehaviour
     public GameObject boss;
     float totalSnowballsDestroyed;
     Transform enemy1, enemy2, enemy3, enemy4;
-    bool look = false, enemyCycleEnd = false, shakeItUp = false, bossLevelActive;
+    bool look = false, enemyCycleEnd = false, shakeItUp = false;
     Transform[] enemies = new Transform[8];
     
     // Start is called before the first frame update
@@ -67,6 +67,7 @@ public class ThrowBehav : MonoBehaviour
             Invoke("ShakeAndCont", 3f);
         }
 
+
     }
 
     void OnTriggerEnter(Collider other)
@@ -81,9 +82,9 @@ public class ThrowBehav : MonoBehaviour
         else
         {
             
-            bossLevelActive = true;
             boss.GetComponent<BlueBoss>().idle = false;
-            boss.transform.Rotate(20, 0, 0);
+            boss.GetComponent<BlueBoss>().target = player;
+            boss.transform.Rotate(12, 0, 0);
             boss.GetComponent<BlueBoss>().globalattack1 = true;
             
         }

@@ -106,3 +106,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   otherSnowball: {fileID: 1801037209323058810}
+  endSparks: {fileID: 8703439041677599153, guid: 62e3509d0ca9c434db6e6ba67b1f9a7b,
+    type: 3}

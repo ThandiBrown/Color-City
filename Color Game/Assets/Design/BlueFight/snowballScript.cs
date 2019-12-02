@@ -6,6 +6,8 @@ public class SnowballScript : MonoBehaviour
 {
     public GameObject otherSnowball;
     public static float totalSnowballsDestroyed = 0;
+    public ParticleSystem endSparks;
+    ParticleSystem endSparksClone;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +30,8 @@ public class SnowballScript : MonoBehaviour
             Debug.Log(hit.transform.name);
             if (hit.transform.name == "Snowball(Clone)")
             {
+                endSparksClone = Instantiate(endSparks, transform.position, Quaternion.Euler(-90, 0, 0));
+                endSparksClone.Play();
                 Destroy(hit.transform.gameObject);
                 totalSnowballsDestroyed++;
                 Debug.Log("it is a ray : " + totalSnowballsDestroyed);
@@ -39,7 +43,8 @@ public class SnowballScript : MonoBehaviour
     {
         if(other.gameObject != otherSnowball && gameObject != null)
         {
-           Destroy(gameObject);
+            other.gameObject.GetComponent<CharacterForBlue>().colorChange = true;
+            Destroy(gameObject);
             totalSnowballsDestroyed++;
             //Debug.Log("it is a hit : " + other.gameObject.name + " " + totalSnowballsDestroyed);
         }
