@@ -23,27 +23,32 @@ public class EnemyThrow : MonoBehaviour
     Transform Target;
     Transform Projectile;
 
-    public bool moveLeft, moveRight, makeMoveL, makeMoveR, changeDir = true;
+    public bool moveLeft, moveRight;
+    bool makeMoveL, makeMoveR, changeDir = true;
     Vector3 way1, way2, orgPos;
+    Vector3 up, down;
 
     static Vector3 orgPosL, orgPosR;
+    bool bouncy = false;
+    public bool wasBouncy;
 
     void Start()
     {
         //way1 = new Vector3(transform.position.x, transform.position.y, transform.position.z + 6f);
         //way2 = new Vector3(transform.position.x, transform.position.y, transform.position.z - 6f);
-        //orgPos = transform.position;
-
-        if (moveRight) orgPosL = transform.position;
-        if (moveLeft) orgPosR = transform.position;
+        orgPos = transform.position;
+        up = new Vector3(transform.position.x, transform.position.y+1, transform.position.z);
+        
     }
 
     public void ThrowSnow()
     {
-        if (moveLeft || moveRight) Debug.Log("Ball: " + (snowballsThrown + 1));
+         
         if (snowballsThrown != numBalls)
         {
             snowballClone = Instantiate(snowball, transform.position, transform.rotation);
+            //Debug.Log("Ball: " + (snowballsThrown + 1));
+            snowballClone.GetComponent<MeshRenderer>().enabled = false;
             myTransform = transform;
             Target = theTarget.transform;
             Projectile = snowballClone.transform;
@@ -52,6 +57,7 @@ public class EnemyThrow : MonoBehaviour
         }
         else
         {
+            Debug.Log("eee " + transform.childCount);
             finishedThrowing = true;
         }
 
@@ -95,7 +101,7 @@ public class EnemyThrow : MonoBehaviour
         Projectile.rotation = Quaternion.LookRotation(Target.position - Projectile.position);
 
         float elapse_time = 0;
-
+        snowballClone.GetComponent<MeshRenderer>().enabled = true;
         while (elapse_time < flightDuration)
         {
             if (Projectile != null)
@@ -107,25 +113,43 @@ public class EnemyThrow : MonoBehaviour
         }
 
         if(!moveLeft && !moveRight) ThrowSnow();
-        if (moveRight) makeMoveR = true;
-        if (moveLeft) makeMoveL = true;
+        if (moveRight)
+        {
+            makeMoveR = true;
+            bouncy = false;
+            
+        }
+        if (moveLeft)
+        {
+            makeMoveL = true;
+            bouncy = false;
+        }
+
     }
 
     void Update()
     {
+        if (bouncy)
+        {
+            float time = Mathf.PingPong(Time.time * 2, 1);
+            transform.position = Vector3.Lerp(orgPos, up, time);
+        }
+        
+
         if (makeMoveR)
         {
             if (changeDir)
             {
                 //Debug.Log("lllll");
-                Debug.Log(transform.position + "lllll" + orgPosR);
+                //Debug.Log(transform.position + "lllll" + orgPosR);
                 transform.position = Vector3.Lerp(transform.position, orgPosR, 0.1f);
 
                 if (Vector3.Distance(transform.position, orgPosR) < 0.1f)
                 {
-                    Debug.Log("2222");
+                   // Debug.Log("2222");
                     changeDir = false;
                     makeMoveR = false;
+                    if (wasBouncy) bouncy = true;
                     ThrowSnow();
                 }
             }
@@ -134,9 +158,10 @@ public class EnemyThrow : MonoBehaviour
 
                 if (Vector3.Distance(transform.position, orgPosL) < 0.1f)
                 {
-                    Debug.Log("4444");
+                    //Debug.Log("4444");
                     changeDir = true;
                     makeMoveR = false;
+                    if (wasBouncy) bouncy = true;
                     ThrowSnow();
                 }
             }
@@ -152,9 +177,10 @@ public class EnemyThrow : MonoBehaviour
 
                 if (Vector3.Distance(transform.position, orgPosL) < 0.1f)
                 {
-                    Debug.Log("6666");
+                    //Debug.Log("6666");
                     changeDir = false;
                     makeMoveL = false;
+                    if (wasBouncy) bouncy = true;
                     ThrowSnow();
                 }
             }
@@ -164,9 +190,10 @@ public class EnemyThrow : MonoBehaviour
 
                 if (Vector3.Distance(transform.position, orgPosR) < 0.1f)
                 {
-                    Debug.Log("8888");
+                    //Debug.Log("8888");
                     changeDir = true;
                     makeMoveL = false;
+                    if (wasBouncy) bouncy = true;
                     ThrowSnow();
                 }
             }
@@ -179,6 +206,9 @@ public class EnemyThrow : MonoBehaviour
         finishedThrowing = false;
         Collider selfCollider = GetComponent<Collider>();
         selfCollider.enabled = false;
+        if(wasBouncy) bouncy = true;
+        if (moveRight) orgPosL = transform.position;
+        if (moveLeft) orgPosR = transform.position;
         ThrowSnow();
     }
     
