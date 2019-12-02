@@ -159,6 +159,26 @@ PrefabInstance:
       propertyPath: theTarget
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 1614782005887007970, guid: 561099ed93fc3d945a4e1924fa8e73a7,
+        type: 3}
+      propertyPath: numBalls
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1614782005887007970, guid: 561099ed93fc3d945a4e1924fa8e73a7,
+        type: 3}
+      propertyPath: firingAngle
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1614782005887007970, guid: 561099ed93fc3d945a4e1924fa8e73a7,
+        type: 3}
+      propertyPath: gravityNum
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1614782005887007970, guid: 561099ed93fc3d945a4e1924fa8e73a7,
+        type: 3}
+      propertyPath: waitSec
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 561099ed93fc3d945a4e1924fa8e73a7, type: 3}
 --- !u!4 &1724754722913330426 stripped
@@ -263,6 +283,11 @@ PrefabInstance:
         type: 3}
       propertyPath: theTarget
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1614782005887007970, guid: 561099ed93fc3d945a4e1924fa8e73a7,
+        type: 3}
+      propertyPath: numBalls
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 561099ed93fc3d945a4e1924fa8e73a7, type: 3}
@@ -369,6 +394,21 @@ PrefabInstance:
       propertyPath: theTarget
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 1614782005887007970, guid: 561099ed93fc3d945a4e1924fa8e73a7,
+        type: 3}
+      propertyPath: numBalls
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1614782005887007970, guid: 561099ed93fc3d945a4e1924fa8e73a7,
+        type: 3}
+      propertyPath: firingAngle
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 1614782005887007970, guid: 561099ed93fc3d945a4e1924fa8e73a7,
+        type: 3}
+      propertyPath: gravityNum
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 561099ed93fc3d945a4e1924fa8e73a7, type: 3}
 --- !u!4 &1724754722038507897 stripped
@@ -473,6 +513,11 @@ PrefabInstance:
         type: 3}
       propertyPath: theTarget
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1614782005887007970, guid: 561099ed93fc3d945a4e1924fa8e73a7,
+        type: 3}
+      propertyPath: numBalls
+      value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 561099ed93fc3d945a4e1924fa8e73a7, type: 3}

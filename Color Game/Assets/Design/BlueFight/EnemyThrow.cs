@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class EnemyThrow : MonoBehaviour
 {
-    public float numBalls = 30;
-    public float firingAngle = 45.0f;
+    public float numBalls;
+    public float firingAngle;
     public float gravityNum;
     public float waitSec;
     public float rotationMultiplier;
@@ -22,18 +22,31 @@ public class EnemyThrow : MonoBehaviour
     Transform Target;
     Transform Projectile;
 
-    public bool moveLeft, moveRight;
+    public bool moveLeft, moveRight, makeMoveL, makeMoveR, changeDir = true;
+    Vector3 way1, way2, orgPos;
 
+    static Vector3 orgPosL, orgPosR;
+
+    void Start()
+    {
+        //way1 = new Vector3(transform.position.x, transform.position.y, transform.position.z + 6f);
+        //way2 = new Vector3(transform.position.x, transform.position.y, transform.position.z - 6f);
+        //orgPos = transform.position;
+
+        if (moveRight) orgPosL = transform.position;
+        if (moveLeft) orgPosR = transform.position;
+    }
 
     public void ThrowSnow()
     {
+        if (moveLeft || moveRight) Debug.Log("Ball: " + (snowballsThrown + 1));
         if (snowballsThrown != numBalls)
         {
             snowballClone = Instantiate(snowball, transform.position, transform.rotation);
             myTransform = transform;
             Target = theTarget.transform;
             Projectile = snowballClone.transform;
-            Debug.Log("Ball: " + (snowballsThrown+1));
+            
             StartCoroutine(SimulateProjectile());
         }
         else
@@ -90,9 +103,73 @@ public class EnemyThrow : MonoBehaviour
             elapse_time += Time.deltaTime;
             yield return null;
         }
-        ThrowSnow();
+
+        if(!moveLeft && !moveRight) ThrowSnow();
+        if (moveRight) makeMoveR = true;
+        if (moveLeft) makeMoveL = true;
     }
-    
+
+    void Update()
+    {
+        if (makeMoveR)
+        {
+            if (changeDir)
+            {
+                //Debug.Log("lllll");
+                Debug.Log(transform.position + "lllll" + orgPosR);
+                transform.position = Vector3.Lerp(transform.position, orgPosR, 0.1f);
+
+                if (Vector3.Distance(transform.position, orgPosR) < 0.1f)
+                {
+                    Debug.Log("2222");
+                    changeDir = false;
+                    makeMoveR = false;
+                    ThrowSnow();
+                }
+            }
+            else{
+                transform.position = Vector3.Lerp(transform.position, orgPosL, 0.1f);
+
+                if (Vector3.Distance(transform.position, orgPosL) < 0.1f)
+                {
+                    Debug.Log("4444");
+                    changeDir = true;
+                    makeMoveR = false;
+                    ThrowSnow();
+                }
+            }
+        }
+
+        if (makeMoveL)
+        {
+            if (changeDir)
+            {
+                //Debug.Log("lllll");
+               // Debug.Log(transform.position + "lllll" + way2);
+                transform.position = Vector3.Lerp(transform.position, orgPosL, 0.1f);
+
+                if (Vector3.Distance(transform.position, orgPosL) < 0.1f)
+                {
+                    Debug.Log("6666");
+                    changeDir = false;
+                    makeMoveL = false;
+                    ThrowSnow();
+                }
+            }
+            else
+            {
+                transform.position = Vector3.Lerp(transform.position, orgPosR, 0.1f);
+
+                if (Vector3.Distance(transform.position, orgPosR) < 0.1f)
+                {
+                    Debug.Log("8888");
+                    changeDir = true;
+                    makeMoveL = false;
+                    ThrowSnow();
+                }
+            }
+        }
+    }
 
     public void StartThrowing()
     {
