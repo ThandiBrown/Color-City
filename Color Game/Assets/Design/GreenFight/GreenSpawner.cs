@@ -161,15 +161,74 @@ public class GreenSpawner : MonoBehaviour
         if (levelNum == 5)
         {
             enemyCount = 0;
-            EarthWeapon.speed = 50f;
+            EarthWeapon.speed = 100f;
+            // hydra
             while (enemyCount < 1)
             {
-                //xPos = Random.Range(30, 40);
-                //zPos = Random.Range(50, 60);
-                enemyClone = Instantiate(theEnemy, new Vector3(50, 2, 80), Quaternion.identity);
+                enemyClone = Instantiate(theEnemy, new Vector3(20, 2, 90), Quaternion.identity);
                 enemyClone.GetComponent<GreenEnemy>().hydra = true;
-                enemyClone.GetComponent<GreenEnemy>().speedNum = 1;
+                enemyClone.GetComponent<GreenEnemy>().speedNum = 3;
 
+                yield return new WaitForSeconds(0.1f);
+                enemyCount++;
+            }
+            //cluster
+            while (enemyCount < 4)
+            {
+                xPos = Random.Range(30, 35);
+                enemyClone = Instantiate(theEnemy, new Vector3(xPos, 2, 40), Quaternion.identity);
+                enemyClone.GetComponent<GreenEnemy>().speedNum = 6;
+                yield return new WaitForSeconds(0.1f);
+                enemyCount++;
+            }
+            //cluster
+            while (enemyCount < 6)
+            {
+                xPos = Random.Range(60, 65);
+                enemyClone = Instantiate(theEnemy, new Vector3(xPos, 2, 80), Quaternion.identity);
+                enemyClone.GetComponent<GreenEnemy>().speedNum = 7;
+                yield return new WaitForSeconds(0.1f);
+                enemyCount++;
+            }
+            //cluster
+            while (enemyCount < 9)
+            {
+                xPos = Random.Range(40, 45);
+                enemyClone = Instantiate(theEnemy, new Vector3(xPos, 2, 50), Quaternion.identity);
+                enemyClone.GetComponent<GreenEnemy>().speedNum = 4;
+                yield return new WaitForSeconds(0.1f);
+                enemyCount++;
+            }
+
+            //speeders
+            while (enemyCount < 12)
+            {
+                xPos = Random.Range(20, 80);
+                zPos = Random.Range(80, 100);
+                enemyClone = Instantiate(theEnemy, new Vector3(xPos, 2, zPos), Quaternion.identity);
+
+                enemyClone.GetComponent<GreenEnemy>().speedNum = Random.Range(10, 11);
+                yield return new WaitForSeconds(0.1f);
+                enemyCount++;
+            }
+            //randoms
+            while (enemyCount < 18)
+            {
+                xPos = Random.Range(40, 60);
+                zPos = Random.Range(50, 70);
+                enemyClone = Instantiate(theEnemy, new Vector3(xPos, 2, zPos), Quaternion.identity);
+
+                enemyClone.GetComponent<GreenEnemy>().speedNum = Random.Range(4, 5);
+                yield return new WaitForSeconds(0.1f);
+                enemyCount++;
+            }
+            
+            //cluster
+            while (enemyCount < 22)
+            {
+                xPos = Random.Range(70, 80);
+                enemyClone = Instantiate(theEnemy, new Vector3(xPos, 2, 50), Quaternion.identity);
+                enemyClone.GetComponent<GreenEnemy>().speedNum = 4;
                 yield return new WaitForSeconds(0.1f);
                 enemyCount++;
             }
