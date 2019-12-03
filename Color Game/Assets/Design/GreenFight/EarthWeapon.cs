@@ -90,11 +90,23 @@ public class EarthWeapon : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        Destroy(other.gameObject);
-        if (other.gameObject != otherEarth || gameObject.name == "EarthWeapon(Clone)")
+        if (other.gameObject.GetComponent<GreenEnemy>().hydra == true)
         {
-            Destroy(gameObject);
+            Debug.Log("jjjjjjjjjjjjj");
+            other.gameObject.GetComponent<GreenEnemy>().FormHydra();
         }
+        else
+        {
+            Debug.Log("eeeeeeeee");
+            Destroy(other.gameObject);
+            if (other.gameObject != otherEarth || gameObject.name == "EarthWeapon(Clone)")
+            {
+                
+                Destroy(gameObject);
+            }
+        }
+
+        
         
     }
 }

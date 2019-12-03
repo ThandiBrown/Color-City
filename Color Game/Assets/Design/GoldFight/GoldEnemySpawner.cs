@@ -14,6 +14,8 @@ public class GoldEnemySpawner : MonoBehaviour
     public float r_repeatRate;
     public float l_repeatRate;
 
+    float level;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -40,17 +42,23 @@ public class GoldEnemySpawner : MonoBehaviour
 
     void RightEnemySpawner()
     {
-        float randomTime = Random.Range(0.5f, 2.5f);
+        // make and set speed
         right = Instantiate(rightEnemy, rightEnemyPos, Quaternion.Euler(0, 0, 0));
         right.GetComponent<RightGoldEnemy>().moveSpeed = Random.Range(1, 3);
+
+        // invoke again in random time
+        float randomTime = Random.Range(0.5f, 2.5f);
         Invoke("RightEnemySpawner", randomTime);
     }
 
     void LeftEnemySpawner()
     {
-        float randomTime = Random.Range(0.5f, 2.5f);
+        // make and set speed
         left = Instantiate(leftEnemy, leftEnemyPos, Quaternion.Euler(0, 180, 0));
         left.GetComponent<LeftGoldEnemy>().moveSpeed = Random.Range(2, 4);
+        
+        // invoke again in random time
+        float randomTime = Random.Range(0.5f, 2.5f);
         Invoke("LeftEnemySpawner", randomTime);
     }
 

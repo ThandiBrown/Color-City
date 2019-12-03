@@ -18,10 +18,10 @@ public class EarthSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (EarthWeapon.count == 4)
-        {
-            Invoke("goToBase", 7f);
-        }
+        //if (EarthWeapon.count == 4)
+        //{
+            //Invoke("goToBase", 7f);
+        //}
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Ray ray = Camera.main.ScreenPointToRay(Crosshair.crosshairPos);

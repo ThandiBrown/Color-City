@@ -31,10 +31,11 @@ public class SpearAttack : MonoBehaviour
     bool jabRight = false, jabLeft = false;
     bool pointingLeft = false, pointingRight = false;
     bool swingActive = false, jabActive = false;
+    bool killAbilityActive;
+
     void Start()
     {
-        
-        
+        killAbilityActive = false;
     }
 
     void Update()
@@ -44,7 +45,8 @@ public class SpearAttack : MonoBehaviour
         {
             jabActive = true;
             jabIsHappening = true;
-           
+            killAbilityActive = true;
+
             startingZPosition = transform.position.z;
             startingYPosition = transform.position.y;
             Debug.Log(startingZPosition);
@@ -108,6 +110,8 @@ public class SpearAttack : MonoBehaviour
             swingIt = true;
             swingActive = true;
             swingIsHappening = true;
+            killAbilityActive = true;
+
             currentRotationAngle = 0;
             if (next)
             {
@@ -154,12 +158,14 @@ public class SpearAttack : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter(Collider other)
+    void OnTriggerStay(Collider other)
     {
-        if (other.gameObject != thePlayer && !other.transform.IsChildOf(thePlayer.transform))
+        if (other.gameObject != thePlayer && !other.transform.IsChildOf(thePlayer.transform) && killAbilityActive)
         {
+            killAbilityActive = false;
             killCount++;
             Destroy(other.gameObject);
         }
+        
     }
 }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterSlide : MonoBehaviour
+public class CharacterMovement : MonoBehaviour
 {
     public static bool movementIsHappening = false;
     public float moveSpeed;

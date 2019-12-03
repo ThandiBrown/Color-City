@@ -108,6 +108,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 9141932579860965335, guid: 0eb46459ffccecd4b8c345e318143f5b, type: 3}
+  fellowEnemy: {fileID: 5440911990631235665}
+  speedNum: 0
+  hydra: 0
+  firstGenHydra: 0
 --- !u!54 &3526157746949817006
 Rigidbody:
   m_ObjectHideFlags: 0
