@@ -265,7 +265,7 @@ public class GreenSpawner : MonoBehaviour
             {
                 enemyClone = Instantiate(theEnemy, new Vector3(75, 2, 200), Quaternion.identity);
                 enemyClone.GetComponent<GreenEnemy>().hydra = true;
-                enemyClone.GetComponent<GreenEnemy>().speedNum = 3.5;
+                enemyClone.GetComponent<GreenEnemy>().speedNum = 3.5f;
                 enemiesAlive.Add(enemyClone);
                 yield return new WaitForSeconds(0.1f);
                 enemyCount++;
@@ -330,9 +330,9 @@ public class GreenSpawner : MonoBehaviour
                 }
                 else if (enemyDeaths >= 28 && levelNum == 5 && goodTogo && Player.greenHitCount < 5)
                 {
-                    endingTag.SetActive(true);
                     enemyDeaths = 0;
                     Debug.Log("Game Over");
+                    endingTag.SetActive(true);
                 }
 
             }

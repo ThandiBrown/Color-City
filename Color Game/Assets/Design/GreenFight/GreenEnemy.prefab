@@ -107,7 +107,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5472c3e3bda875a49acc2a415afcd5fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 9141932579860965335, guid: 0eb46459ffccecd4b8c345e318143f5b, type: 3}
+  player: {fileID: 4966776479671472172, guid: 99e6ae97a85585c4e880df818614df82, type: 3}
   fellowEnemy: {fileID: 5440911990631235665}
   speedNum: 0
   hydra: 0
