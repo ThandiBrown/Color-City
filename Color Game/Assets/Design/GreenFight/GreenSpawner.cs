@@ -20,6 +20,8 @@ public class GreenSpawner : MonoBehaviour
     public GameObject level4Tag;
     public GameObject level5Tag;
     public GameObject playerDeathTag;
+    public GameObject endingTag;
+
     static bool goodTogo;
     // Start is called before the first frame update
     public void Start()
@@ -261,9 +263,9 @@ public class GreenSpawner : MonoBehaviour
             // hydra
             while (enemyCount < 24)
             {
-                enemyClone = Instantiate(theEnemy, new Vector3(75, 2, 110), Quaternion.identity);
+                enemyClone = Instantiate(theEnemy, new Vector3(75, 2, 200), Quaternion.identity);
                 enemyClone.GetComponent<GreenEnemy>().hydra = true;
-                enemyClone.GetComponent<GreenEnemy>().speedNum = 3;
+                enemyClone.GetComponent<GreenEnemy>().speedNum = 3.5;
                 enemiesAlive.Add(enemyClone);
                 yield return new WaitForSeconds(0.1f);
                 enemyCount++;
@@ -328,7 +330,8 @@ public class GreenSpawner : MonoBehaviour
                 }
                 else if (enemyDeaths >= 28 && levelNum == 5 && goodTogo && Player.greenHitCount < 5)
                 {
-                    
+                    endingTag.SetActive(true);
+                    enemyDeaths = 0;
                     Debug.Log("Game Over");
                 }
 

@@ -7,7 +7,7 @@ public class MessageOne : MonoBehaviour
 {
     public GameObject window;
     // Start is called before the first frame update
-    void Start()
+    public void Start()
     {
         Invoke("Hide", 2f);
     }

@@ -12,7 +12,7 @@ public class GreenStartUp : MonoBehaviour
     public GameObject level4Tag;
     public GameObject level5Tag;
     public GameObject playerDeathTag;
-
+    public GameObject endingTag;
     public GameObject enemySpawner;
     public static bool gameStart;
 
@@ -26,6 +26,7 @@ public class GreenStartUp : MonoBehaviour
         level3Tag.SetActive(false);
         level4Tag.SetActive(false);
         level5Tag.SetActive(false);
+        endingTag.SetActive(false);
         playerDeathTag.GetComponent<PlayerDeathTag>().enemySpawner = enemySpawner;
         playerDeathTag.SetActive(false);
     }
@@ -43,7 +44,7 @@ public class GreenStartUp : MonoBehaviour
         enemySpawner.GetComponent<GreenSpawner>().level3Tag = level3Tag;
         enemySpawner.GetComponent<GreenSpawner>().level4Tag = level4Tag;
         enemySpawner.GetComponent<GreenSpawner>().level5Tag = level5Tag;
-
+        enemySpawner.GetComponent<GreenSpawner>().endingTag = endingTag;
         enemySpawner.GetComponent<GreenSpawner>().Start();
 
         playerDeathTag.GetComponent<PlayerDeathTag>().level1Tag = level1Tag;

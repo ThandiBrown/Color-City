@@ -20,11 +20,29 @@ public class PlayerDeathTag : MonoBehaviour
 
     public void RestartLevel()
     {
-        if (GreenSpawner.levelDeath == 1 ) level1Tag.SetActive(true);
-        if (GreenSpawner.levelDeath == 2) level2Tag.SetActive(true);
-        if (GreenSpawner.levelDeath == 3) level3Tag.SetActive(true);
-        if (GreenSpawner.levelDeath == 4) level4Tag.SetActive(true);
-        if (GreenSpawner.levelDeath == 5) level5Tag.SetActive(true);
+        if (GreenSpawner.levelDeath == 1) {
+            level1Tag.SetActive(true);
+            level1Tag.GetComponent<MessageOne>().Start();
+        }
+        if (GreenSpawner.levelDeath == 2) {
+            level2Tag.SetActive(true);
+            level2Tag.GetComponent<MessageTwo>().Start();
+        }
+        if (GreenSpawner.levelDeath == 3)
+        {
+            level3Tag.SetActive(true);
+            level3Tag.GetComponent<MessageThree>().Start();
+        }
+        if (GreenSpawner.levelDeath == 4)
+        {
+            level4Tag.SetActive(true);
+            level4Tag.GetComponent<MessageFour>().Start();
+        }
+        if (GreenSpawner.levelDeath == 5)
+        {
+            level5Tag.SetActive(true);
+            level5Tag.GetComponent<MessageFive>().Start();
+        }
 
         GreenSpawner.levelNum = GreenSpawner.levelDeath - 1;
         Player.greenHitCount = 0;
