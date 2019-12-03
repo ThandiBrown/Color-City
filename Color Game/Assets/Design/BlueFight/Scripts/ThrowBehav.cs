@@ -35,7 +35,7 @@ public class ThrowBehav : MonoBehaviour
             LevelPassScript.entered = false;
         }
 
-        if (CharacterForBlue.hitCount >= 27)
+        if (CharacterForBlue.hitCount >= 100)
         {
             if (!handlingRespawn)
             {

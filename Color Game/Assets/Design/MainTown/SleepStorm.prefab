@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 549132768905591256}
   - component: {fileID: 327050137232939318}
   m_Layer: 0
-  m_Name: Glow
+  m_Name: SleepStorm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4778,7 +4778,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotSpeed: {x: 0, y: 0, z: 300}
   followSpeed: 500
-  player: {fileID: 0}
+  player: {fileID: 346206320895236473, guid: bcf56f2b6b1e0ad4cbb84b2d5a6ba77f, type: 3}
   waitTime: 0
   colliderTime: 0
 --- !u!135 &327050137232939318

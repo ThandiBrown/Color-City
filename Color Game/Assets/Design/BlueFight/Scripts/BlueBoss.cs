@@ -92,6 +92,9 @@ public class BlueBoss : MonoBehaviour
             else
             {
                 count = 0;
+                attack2 = false;
+                BossWeapon.fcount = 0;
+                BossWeapon.ycount = 0;
                 globalattack1 = true;
             }
         }

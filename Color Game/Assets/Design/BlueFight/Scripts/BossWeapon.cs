@@ -23,7 +23,19 @@ public class BossWeapon : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        Destroy(gameObject);
+        if (level1)
+        {
+            level1 = false;
+            if (fcount == 3) transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + 100);
+            else Destroy(gameObject);
+        }
+        if (level2)
+        {
+            level2 = false;
+            Destroy(gameObject);
+        }
+
+        lastBallEnded = true;   
     }
 
     void OnMouseDown()

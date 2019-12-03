@@ -45,10 +45,11 @@ public class PinkStorm : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject != player && !other.gameObject.GetComponent<EnemyFollowingScript>().manDown)
+        //if(other.gameObject != player && !other.gameObject.GetComponent<EnemyFollowingScript>().manDown)
+        if (other.gameObject != player)
         {
             Debug.Log("detected");
-            other.gameObject.GetComponent<EnemyFollowingScript>().FallDown();
+            //other.gameObject.GetComponent<EnemyFollowingScript>().FallDown();
         }
         
     }

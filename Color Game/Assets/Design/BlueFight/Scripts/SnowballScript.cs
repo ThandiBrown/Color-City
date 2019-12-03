@@ -17,7 +17,6 @@ public class SnowballScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
     }
 
     void OnMouseDown()
@@ -34,7 +33,7 @@ public class SnowballScript : MonoBehaviour
                 endSparksClone.Play();
                 Destroy(hit.transform.gameObject);
                 totalSnowballsDestroyed++;
-               // Debug.Log("it is a ray : " + totalSnowballsDestroyed);
+               Debug.Log("it is a ray : " + totalSnowballsDestroyed);
             }
         }
     }
@@ -46,7 +45,7 @@ public class SnowballScript : MonoBehaviour
             other.gameObject.GetComponent<CharacterForBlue>().colorChange = true;
             Destroy(gameObject);
             totalSnowballsDestroyed++;
-            //Debug.Log("it is a hit : " + other.gameObject.name + " " + totalSnowballsDestroyed);
+            Debug.Log("it is a hit : " + other.gameObject.name + " " + totalSnowballsDestroyed);
         }
     }
 }
