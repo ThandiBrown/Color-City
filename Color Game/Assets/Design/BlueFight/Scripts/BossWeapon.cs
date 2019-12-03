@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class BossWeapon : MonoBehaviour
 {
+    AudioSource hitter;
+    public AudioClip hitSound;
     public GameObject player;
     public bool level1, level2, lastBallEnded;
     public static float fcount, ycount;
@@ -12,6 +14,7 @@ public class BossWeapon : MonoBehaviour
     void Start()
     {
         fcount++;
+        hitter = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -48,17 +51,26 @@ public class BossWeapon : MonoBehaviour
         {
             if (hit.transform.name == "BossWeapon(Clone)")
             {
+                hitter.PlayOneShot(hitSound, 0.7f);
+                GetComponent<Renderer>().enabled = false;
+                
+
                 if (level1)
                 {
                     level1 = false;
-                    if(fcount == 3) hit.transform.position = new Vector3(hit.transform.position.x, hit.transform.position.y, hit.transform.position.z + 100);
-                    else Destroy(hit.transform.gameObject);
+                    if (fcount == 3) hit.transform.position = new Vector3(hit.transform.position.x, hit.transform.position.y, hit.transform.position.z + 100);
+                    else
+                    {
+                        hit.transform.position = new Vector3(hit.transform.position.x, hit.transform.position.y, hit.transform.position.z + 100);
+                        Destroy(hit.transform.gameObject, hitSound.length);
+                    }
                 }
                 if (level2)
                 {
                     level2 = false;
                     ycount++;
-                    Destroy(hit.transform.gameObject);
+                    hit.transform.position = new Vector3(hit.transform.position.x, hit.transform.position.y, hit.transform.position.z + 100);
+                    Destroy(hit.transform.gameObject, hitSound.length);
                 }
                 //hit.transform.position = new Vector3(hit.transform.position.x, hit.transform.position.y, hit.transform.position.z + 100);
                 

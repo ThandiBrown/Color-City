@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GreenSpawner : MonoBehaviour
 {
@@ -275,6 +276,11 @@ public class GreenSpawner : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Invoke("goToBase", 2f);
+        }
+
         goodTogo = true;
         for (int i = 0; i < enemiesAlive.Count; i++)
         {
@@ -338,5 +344,12 @@ public class GreenSpawner : MonoBehaviour
             }
         }
 
+    }
+
+    void goToBase()
+    {
+        
+        SceneManager.LoadScene("MainTown");
+        
     }
 }
