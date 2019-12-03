@@ -5,7 +5,7 @@ using UnityEngine;
 public class CharacterMovement : MonoBehaviour
 {
     public static bool movementIsHappening = false;
-    public float moveSpeed;
+    public static float moveSpeed = 5f;
     public float jumpForce;
     public float gravityScale;
     public CharacterController controller;

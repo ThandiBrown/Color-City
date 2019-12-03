@@ -49,8 +49,8 @@ public class SpearAttack : MonoBehaviour
 
             startingZPosition = transform.position.z;
             startingYPosition = transform.position.y;
-            Debug.Log(startingZPosition);
-            Debug.Log(startingZPosition - length);
+            //Debug.Log(startingZPosition);
+            //Debug.Log(startingZPosition - length);
             forward = true;
             if (!pointingLeft && !pointingRight) jabRight = true;
             if (pointingLeft) jabLeft = true;
