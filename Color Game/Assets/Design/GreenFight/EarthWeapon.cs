@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class EarthWeapon : MonoBehaviour
 {
-    public GameObject otherEarth;
-
+    
     public GameObject ball;
     public GameObject player;
     Vector3 risePos;
@@ -39,12 +38,13 @@ public class EarthWeapon : MonoBehaviour
         else if (ball == null)
         {
             rise = false;
+            
+            GreenSpawner.enemyDeaths++;
             Destroy(gameObject);
         }
 
         if (face && ball != null)
         {
-            if (goTowards) Debug.Log("oof");
             transform.LookAt(ball.transform, Vector3.up);
 
             Vector3 dirFromAtoB = (ball.transform.position - transform.position).normalized;
@@ -52,7 +52,6 @@ public class EarthWeapon : MonoBehaviour
 
             if (dotProd > 0.9)
             {
-                Debug.Log("closer");
                 face = false;
                 goTowards = true;
             }
@@ -60,6 +59,8 @@ public class EarthWeapon : MonoBehaviour
         else if (ball == null)
         {
             face = false;
+            
+            GreenSpawner.enemyDeaths++;
             Destroy(gameObject);
         }
 
@@ -72,20 +73,21 @@ public class EarthWeapon : MonoBehaviour
             else
             {
                 goTowards = false;
-                Debug.Log("hit");
             }
 
         }
         else if (ball == null)
         {
             goTowards = false;
+            GreenSpawner.enemyDeaths++;
+            
             Destroy(gameObject);
         }
     }
 
     void continueAttack()
     {
-        Debug.Log("mimp");
+
         face = true;
     }
 
@@ -98,11 +100,11 @@ public class EarthWeapon : MonoBehaviour
         }
         else
         {
-            Debug.Log("eeeeeeeee");
-            Destroy(other.gameObject);
-            if (other.gameObject != otherEarth || gameObject.name == "EarthWeapon(Clone)")
+            if (other.gameObject.name != "EarthWeapon(Clone)" || gameObject.name == "EarthWeapon(Clone)")
             {
+                GreenSpawner.enemyDeaths++;
                 
+                Destroy(other.gameObject);
                 Destroy(gameObject);
             }
         }
