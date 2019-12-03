@@ -22,7 +22,11 @@ public class PlayerAttacked : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.transform.name == "LeftEnemy(Clone)" || other.gameObject.transform.name == "RightEnemy(Clone)") Destroy(transform.parent.gameObject);
+        if (other.gameObject.transform.name == "LeftEnemy(Clone)" || other.gameObject.transform.name == "RightEnemy(Clone)")
+        {
+            Destroy(transform.parent.gameObject);
+            SceneManager.LoadScene("GoldFight");
+        }
     }
 
     void goToBase()
