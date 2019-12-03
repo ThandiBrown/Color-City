@@ -7,8 +7,9 @@ public class BlueBoss : MonoBehaviour
     
     public GameObject bossWeapon;
     public GameObject player;
-
-
+    public AudioClip groundShake;
+    public AudioClip yell;
+    AudioSource source;
     public bool idle, globalattack1;
 
     bool attack1, attack2;
@@ -20,6 +21,7 @@ public class BlueBoss : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        source = GetComponent<AudioSource>();
         // lets boss move up and down
         orgPos = transform.position;
         up = new Vector3(transform.position.x, transform.position.y + 1, transform.position.z);
@@ -103,6 +105,8 @@ public class BlueBoss : MonoBehaviour
 
     public void NextLevel()
     {
+        source.PlayOneShot(groundShake, 0.7f);
+        source.PlayOneShot(yell, 0.7f);
         transform.position = new Vector3(transform.position.x, transform.position.y + 5, transform.position.z);
         transform.Rotate(20, 0, 0);
     }

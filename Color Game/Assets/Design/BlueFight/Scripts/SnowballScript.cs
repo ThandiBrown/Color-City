@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class SnowballScript : MonoBehaviour
 {
+    AudioSource hitter;
+    public AudioClip hitSound;
     public GameObject otherSnowball;
     public static float totalSnowballsDestroyed = 0;
     public ParticleSystem endSparks;
@@ -11,12 +13,13 @@ public class SnowballScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        hitter = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
     void Update()
     {
+
     }
 
     void OnMouseDown()
@@ -29,11 +32,15 @@ public class SnowballScript : MonoBehaviour
             Debug.Log(hit.transform.name);
             if (hit.transform.name == "Snowball(Clone)")
             {
+                hitter.PlayOneShot(hitSound, 0.7f);
+                GetComponent<Renderer>().enabled = false;
                 endSparksClone = Instantiate(endSparks, transform.position, Quaternion.Euler(-90, 0, 0));
                 endSparksClone.Play();
-                Destroy(hit.transform.gameObject);
+                hit.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + 100);
+                Destroy(hit.transform.gameObject, hitSound.length);
                 totalSnowballsDestroyed++;
-               Debug.Log("it is a ray : " + totalSnowballsDestroyed);
+                Destroy(endSparksClone.gameObject, endSparksClone.main.duration);
+                Debug.Log("it is a ray : " + totalSnowballsDestroyed);
             }
         }
     }
