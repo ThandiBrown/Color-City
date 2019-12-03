@@ -12,6 +12,7 @@ public class EarthWeapon : MonoBehaviour
     static bool goTowards;
     bool rise, face;
     public static float count = 0;
+    public static float speed = 25f;
     // Start is called before the first frame update
     void Start()
     {
@@ -66,7 +67,7 @@ public class EarthWeapon : MonoBehaviour
         {
             if (gameObject != null && ball != null)
             {
-                transform.position = Vector3.MoveTowards(transform.position, ball.transform.position, 25f * Time.deltaTime);
+                transform.position = Vector3.MoveTowards(transform.position, ball.transform.position, speed * Time.deltaTime);
             }
             else
             {
