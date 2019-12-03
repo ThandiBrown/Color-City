@@ -10,10 +10,5 @@ public class Blast : MonoBehaviour
     {
         blast.Play();
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 }

@@ -23,7 +23,7 @@ public class RightGoldEnemy : MonoBehaviour
                 Invoke("DestoryMe", 2.5f);
                 once = false;
             }
-            transform.position = Vector3.MoveTowards(transform.position, Vector3.forward, 50f * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, -Vector3.forward, 50f * Time.deltaTime);
         }
         else if (player.transform.position.z > transform.position.z || player != null)
         {
